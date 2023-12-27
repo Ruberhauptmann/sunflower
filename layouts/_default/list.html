@@ -1,9 +1,40 @@
 {{ define "main" }}
-{{ range .Pages }}
-<article
-    class="justify-self-center mx-auto mb-16 px-6 sm:px-4 md:px-0 prose dark:prose-invert prose-slate lg:prose-lg hover:prose-a:text-sky-500">
-    <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-    {{ .Content }}
-</article>
+
+{{ if .IsHome }}
+{{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+{{ else }}
+{{ $pag := .Paginator.Pages }}
 {{ end }}
+
+<article class="max-w-prose justify-self-center mx-auto mb-16 px-6 sm:px-4 md:px-0 space-y-2">
+    <article class="prose">
+        <h1>{{ .Title }}</h1>
+
+        {{ .Content }}
+    </article>
+
+
+    {{ range .Paginator.Pages }}
+    <article>
+        {{ partial "postmeta.html" . }}
+        <p class="line-clamp-3">{{ .Summary }}</p>
+    </article>
+    {{ end }}
+
+    {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+<ul class="pager">
+    {{ if .Paginator.HasPrev }}
+<li class="previous">
+<a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; Newer</a>
+</li>
+{{ end }}
+{{ if .Paginator.HasNext }}
+<li class="next">
+<a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">Older &rarr;</a>
+</li>
+{{ end }}
+</ul>
+{{ end }}
+
+</article>
 {{ end }}

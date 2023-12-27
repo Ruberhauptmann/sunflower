@@ -13,10 +13,10 @@
         "not dead"
     ],
     "dependencies": {
-        "@tailwindcss/aspect-ratio": "^0.x",
-        "@tailwindcss/forms": "^0.x",
+        "@tailwindcss/aspect-ratio": "^0.4.2",
         "@tailwindcss/typography": "^0.5.x",
         "autoprefixer": "^10.x",
+        "daisyui": "^4.4.23",
         "postcss": "^8.x",
         "postcss-cli": "^11.x",
         "tailwindcss": "^3.x"

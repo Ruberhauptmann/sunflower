@@ -1,0 +1,3 @@
+{{ range .Site.Menus.main.Sort }}
+<li><a href="{{ .URL | relLangURL }}" id="{{ .Name }}">{{ .Name }}</a></li>
+{{ end }}

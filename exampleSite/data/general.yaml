@@ -1,0 +1,8 @@
+en:
+  name: "Joe Bob"
+  email: "joebob@joebob.com"
+  website: joebob.com
+  other_links:
+    Gitlab: "gitlab.com/joebob101"
+    Github: "github.com/joebob101"
+    Twitter: "twitter.com/joebob101"

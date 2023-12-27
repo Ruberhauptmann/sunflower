@@ -1,0 +1,57 @@
+{{ if .Params.link }}
+{{ .Scratch.Set "link" .Params.link}}
+{{ else if .Params.download }}
+{{ .Scratch.Set "link-text" .Params.download }}
+{{ .Scratch.Set "link" (print .Permalink .Params.download) }}
+{{ end }}
+
+{{ if .Params.icon }}
+{{ .Scratch.Set "icon" .Params.icon }}
+{{ else if .Params.link }}
+{{ $u := urls.Parse .Params.link }}
+{{ .Scratch.Set "icon" (index (first 1 (split $u.Hostname ".")) 0) }}
+{{ .Scratch.Set "link-text" (.Scratch.Get "icon" | humanize ) }}
+{{ else }}
+{{ .Scratch.Set "link_text" "target" }}
+{{ .Scratch.Set "icon" "file-o" }}
+{{ end }}
+
+<p class="text-sm">
+  {{ if .Params.date_finished }}
+    Lecture finished {{ time.Format "January 2006" .Params.date_finished }}
+  {{ else }}
+    {{ .Lastmod.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}
+  {{ end }}
+
+  {{ range .Params.categories }}
+  | <a href="{{ $.Site.BaseURL }}/categories/{{ . | urlize }}/" class="categories">{{ . }}</a>
+  {{ end }}
+</p>
+
+<h2 class="text-3xl">
+  <a href="{{ .Permalink }}">{{ .Title }}</a>
+</h2>
+
+{{ if .Params.series }}
+<p>
+  in <a href="{{ $.Site.BaseURL }}/series/{{ .Params.series | urlize }}/" class="uppercase link link-primary">{{ .Params.series }}</a>
+</p>
+{{ end }}
+
+
+{{ if .Params.tags }}
+  <i class="fa fa-folder-open"></i>
+  {{ range sort .Params.tags }}
+    <a href="{{ $.Site.BaseURL }}/tags/{{ . | urlize }}/">{{ . }}</a> |
+  {{ end }}
+{{ end }}
+
+{{ $icon := .Scratch.Get "icon" }}
+{{ $link := .Scratch.Get "link" }}
+{{ if $link }}
+<p>
+  <a href="{{ $link }}" target="_blank">
+    <i class="fa fa-{{ $icon }}" aria-hidden="true"></i> {{ .Scratch.Get "link-text"}}
+  </a>
+</p>
+{{ end }}

@@ -1,5 +1,4 @@
 module.exports = {
-  darkMode: 'class',
   content: [
     "./themes/**/layouts/**/*.html",
     "./content/**/layouts/**/*.html",
@@ -10,8 +9,25 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ]
+      require("@tailwindcss/typography"),
+      require("daisyui")
+  ],
+  daisyui: {
+    themes: [
+      {
+        sunflower: {
+          "primary": "#073B3A",
+          "secondary": "#E9C46A",
+          "accent": "#542344",
+          "neutral": "#ffffff",
+          "base-100": "#e5e7eb",
+          "info": "#C6D4FF",
+          "success": "#41766F",
+          "warning": "#CF933A",
+          "error": "#A32929",
+        },
+      },
+    ],
+    logs: false,
+  }
 }

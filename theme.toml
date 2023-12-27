@@ -3,9 +3,9 @@
 
 name = "Sunflower"
 license = "MIT"
-licenselink = ""
+licenselink = "https://gitlab.com/Ruberhauptmann/sunflower/-/blob/main/LICENSE"
 description = "A hugo theme using tailwindcss"
-homepage = ""
+homepage = "https://gitlab.com/Ruberhauptmann/sunflower"
 tags = ["Hugo", "Tailwind CSS", "theme", "DaisyUI", "boilerplate"]
 features = []
 min_version = "0.88.0"
