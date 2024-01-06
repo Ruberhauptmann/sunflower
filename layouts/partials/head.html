@@ -11,13 +11,13 @@
     <meta name="keywords" content="{{ delimit .Keywords " ," }}" />
     {{ end -}}
     {{- if .Params.Author }}
-    <meta name="author" content="{{ .Params.Author}}" />
+    <meta name="author" content="{{ .Params.Author }}" />
     {{ end -}}
     {{ hugo.Generator }}
 
     {{ partialCached "css.html" . }}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
 
-    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/{{ .Site.Params.Favicon }}">
+    <link rel="icon" type="image/png" href="/{{ .Site.Params.Favicon }}">
 </head>

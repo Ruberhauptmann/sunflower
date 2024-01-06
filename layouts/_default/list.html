@@ -13,28 +13,23 @@
         {{ .Content }}
     </article>
 
-
     {{ range .Paginator.Pages }}
-    <article>
         {{ partial "postmeta.html" . }}
-        <p class="line-clamp-3">{{ .Summary }}</p>
-    </article>
     {{ end }}
 
     {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-<ul class="pager">
-    {{ if .Paginator.HasPrev }}
-<li class="previous">
-<a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; Newer</a>
-</li>
-{{ end }}
-{{ if .Paginator.HasNext }}
-<li class="next">
-<a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">Older &rarr;</a>
-</li>
-{{ end }}
-</ul>
-{{ end }}
-
+    <ul class="pager">
+        {{ if .Paginator.HasPrev }}
+        <li class="previous">
+            <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; Newer</a>
+        </li>
+        {{ end }}
+        {{ if .Paginator.HasNext }}
+        <li class="next">
+            <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">Older &rarr;</a>
+        </li>
+        {{ end }}
+    </ul>
+    {{ end }}
 </article>
 {{ end }}

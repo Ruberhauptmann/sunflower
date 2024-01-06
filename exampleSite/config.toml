@@ -4,7 +4,10 @@ baseURL = "https://example.com"
 title = "Sunflower Example Site"
 
 author = "Tjark Sievers"
-copyright = "Copyright © 2023, Tjark Sievers, all rights reserved."
+copyright = "Copyright © 2024, Tjark Sievers, all rights reserved."
+
+[params]
+  favicon = "sunflower.png"
 
 paginate = 3
 
