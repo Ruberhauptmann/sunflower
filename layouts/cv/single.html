@@ -57,7 +57,7 @@
                 {{ .name }} ({{ .institution }})
 
                 {{ if .notes }}
-                <p>{{ .notes }}.</p>
+                <p class="text-justify">{{ .notes }}.</p>
                 {{ end }}
                 {{ if .appraisal }}<p>Final grade: {{ .appraisal }}</p>{{ end }}
             </div>
@@ -75,7 +75,7 @@
                 {{ .name }} ({{ .institution }})
 
                 {{ if .notes }}
-                <p>{{ .notes }}.</p>
+                <p class="text-justify">{{ .notes }}.</p>
                 {{ end }}
 
                 {{ if .appraisal }}<p>Final grade: {{ .appraisal }}</p>{{ end }}
@@ -112,7 +112,7 @@
 
     {{ if .Site.Data.work_experience.en.former }}
     {{ range sort .Site.Data.work_experience.en.former "startdate" "desc" }}
-    <div class="flex">
+        <div class="flex relative text-primary-content">
         <div class="flex-auto w-5/12 text-right pr-4">
             {{ time.Format "01/2006" .startdate }} - {{ time.Format "01/2006" .enddate }}
         </div>

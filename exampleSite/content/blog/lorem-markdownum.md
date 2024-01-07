@@ -1,8 +1,11 @@
----
-author: Dirk Olbrich
-title: Lorem Markdownum
-date: 2021-01-07
----
++++
+title = "Lorem Markdownum"
+author = "Dirk Olbrich"
+date = 2021-01-07
+categories = ["Blog"]
+tags = ["A tag"]
+series = "A series"
++++
 
 ## Amens nitentior vires
 

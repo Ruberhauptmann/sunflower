@@ -1,7 +1,7 @@
 +++
 title = "Introduction"
 date = 2023-10-19
-author = "Tjark Sievers"
+author = ""
 categories = ["Blog"]
 tags = ["A tag"]
 series = "A series"

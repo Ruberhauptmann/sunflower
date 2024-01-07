@@ -1,8 +1,11 @@
----
-author: Dirk Olbrich
-title: A second Post
-date: 2019-05-14
----
++++
+title = "Lorem Markdownum"
+author = "Dirk Olbrich"
+date = 2021-01-07
+categories = ["Blog"]
+tags = ["A tag"]
+series = "A series"
++++
 
 A lot more Wise words.
 

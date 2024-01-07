@@ -3,13 +3,16 @@ languageCode = "en-us"
 baseURL = "https://example.com"
 title = "Sunflower Example Site"
 
-author = "Tjark Sievers"
-copyright = "Copyright © 2024, Tjark Sievers, all rights reserved."
+author = "Joe Bob"
+copyright = "Copyright © 2024, Joe Bob, all rights reserved."
+
+paginate = 3
+
 
 [params]
   favicon = "sunflower.png"
+  abstract = "This is a site showing the capacities of the sunflower theme for hugo."
 
-paginate = 3
 
 [taxonomies]
 category = "categories"
