@@ -11,6 +11,8 @@ paginate = 3
 
 [params]
   favicon = "sunflower.png"
+  hero = "hero.jpg"
+  mainSections = ["projects", "blog"]
   abstract = "This is a site showing the capacities of the sunflower theme for hugo."
 
 

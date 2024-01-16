@@ -5,8 +5,8 @@
 <body>
 {{- partial "dev/dev-tools.html" . -}}
 {{- partial "header.html" . -}}
-        <main>
-            <div class="max-w-[100vw] min-h-screen pt-6 pb-16">
+        <main class="relative">
+            <div class="max-w-[100vw] min-h-screen pb-16">
                 {{- block "main" . }}{{- end }}
             </div>
         </main>

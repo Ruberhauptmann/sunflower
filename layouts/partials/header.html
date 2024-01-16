@@ -1,20 +1,16 @@
-<div class="navbar">
-    <div class="navbar-start">
-        <div class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+<div class="sticky top-0 z-40 w-full backdrop-blur-xl flex-none transition-colors duration-500 lg:z-50 lg:border-b">
+    <div class="max-w-7xl mx-auto">
+        <div class="py-0.5 border-b mx-20">
+            <div class="relative flex items-center">
+                <a class="text-sm" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+                <div class="relative hidden lg:flex items-center ml-auto">
+                    <nav>
+                        <ul class="flex space-x-8">
+                            {{- partial "navbar_items.html" . -}}
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                {{- partial "navbar_items.html" . -}}
-            </ul>
         </div>
-        <a class="btn btn-ghost text-xl" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-    </div>
-    <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
-            {{- partial "navbar_items.html" . -}}
-        </ul>
-    </div>
-    <div class="navbar-end">
     </div>
 </div>

@@ -1,3 +1,3 @@
 {{ range .Site.Menus.main.Sort }}
-<li><a href="{{ .URL | relLangURL }}" id="{{ .Name }}">{{ .Name }}</a></li>
+<li><a class="hover:text-accent text-sm" href="{{ .URL | relLangURL }}" id="{{ .Name }}">{{ .Name }}</a></li>
 {{ end }}

@@ -1,7 +1,7 @@
 {{ define "main" }}
 
-<article class="max-w-prose justify-self-center mx-auto mb-16 px-6 sm:px-4 md:px-0 space-y-2">
-    <h1 class="text-2xl font-bold">{{ .Title }}</h1>
+<article class="max-w-prose justify-self-center mx-auto mb-16 px-6 sm:px-4 md:px-0 space-y-2 mt-8">
+    <h1 class="text-4xl font-bold">{{ .Title }}</h1>
     <br>
 
     {{ .Content }}
@@ -11,8 +11,10 @@
         <div class="block absolute -inset-1 -skew-y-2 bg-primary" aria-hidden="true"></div>
         <div class="flex relative text-primary-content">
             {{ if .Site.Data.general.en.website }}
-            <div class="flex-auto w-5/12 text-right pr-4">Website</div>
-            <div class="flex-auto w-7/12">
+            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
+                Website
+            </div>
+            <div class="flex-auto w-7/12 sm:w-2/3">
                 <a href="https://{{ .Site.Data.general.en.website }}" class="link link-hover">{{ .Site.Data.general.en.website }}</a>
             </div>
             {{ end }}
@@ -20,8 +22,9 @@
 
         {{ if .Site.Data.general.en.email }}
         <div class="flex relative text-primary-content">
-            <div class="flex-auto w-5/12 text-right pr-4">Email</div>
-            <div class="flex-auto w-7/12">
+            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
+                Email</div>
+            <div class="flex-auto w-7/12 sm:w-2/3">
                 <a href="mailto:{{ .Site.Data.general.email }}" class="link link-hover">{{ .Site.Data.general.en.email }}</a>
             </div>
             {{ end }}
@@ -29,10 +32,10 @@
 
         {{ range $name, $url := .Site.Data.general.en.other_links }}
         <div class="flex relative text-primary-content">
-            <div class="flex-auto w-5/12 text-right pr-4">
+            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
                 {{ $name }}
             </div>
-            <div class="flex-auto w-7/12">
+            <div class="flex-auto w-7/12 sm:w-2/3">
                 <a href="https://{{ $url }}" class="link link-hover">{{ $url }}</a>
             </div>
         </div>
@@ -50,10 +53,10 @@
     <div class="relative p-3">
         <div class="block absolute -inset-1 skew-y-2 bg-secondary" aria-hidden="true"></div>
         <div class="flex relative text-secondary-content">
-            <div class="flex-auto w-5/12 text-right pr-4">
+            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
                 since {{ time.Format "01/2006" .date }}
             </div>
-            <div class="flex-auto w-7/12">
+            <div class="flex-auto w-7/12 sm:w-2/3">
                 {{ .name }} ({{ .institution }})
 
                 {{ if .notes }}
@@ -68,10 +71,10 @@
         {{ if .Site.Data.education.en.former }}
         {{ range sort .Site.Data.education.en.former "date" "desc" }}
         <div class="flex relative text-secondary-content">
-            <div class="flex-auto w-5/12 text-right pr-4">
+            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
                 {{ time.Format "01/2006" .date }}
             </div>
-            <div class="flex-auto w-7/12">
+            <div class="flex-auto w-7/12 sm:w-2/3">
                 {{ .name }} ({{ .institution }})
 
                 {{ if .notes }}
@@ -96,14 +99,15 @@
     <div class="relative p-7">
         <div class="block absolute -inset-1 -skew-y-2 bg-primary" aria-hidden="true"></div>
         <div class="flex relative text-primary-content">
-        <div class="flex-auto w-5/12 text-right pr-4">
-            since {{ time.Format "01/2006" .startdate }}
-        </div>
-        <div class="flex-auto w-7/12">
+            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
+                since {{ time.Format "01/2006" .startdate }}
+            </div>
+
+            <div class="flex-auto w-7/12">
             {{ .position }} ({{ .company }})
 
             {{ if .achievements }}
-            <ul class="list-disc list-inside">{{ range .achievements }}<li class="text-justify">{{ . }}</li>{{ end }}</ul>
+            <ul class="list-disc list-inside">{{ range .achievements }}<li>{{ . }}</li>{{ end }}</ul>
             {{ end }}
         </div>
     </div>
@@ -113,19 +117,19 @@
     {{ if .Site.Data.work_experience.en.former }}
     {{ range sort .Site.Data.work_experience.en.former "startdate" "desc" }}
         <div class="flex relative text-primary-content">
-        <div class="flex-auto w-5/12 text-right pr-4">
-            {{ time.Format "01/2006" .startdate }} - {{ time.Format "01/2006" .enddate }}
-        </div>
-        <div class="flex-auto w-7/12">
-            {{ .position }} ({{ .company }})
+            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
+                {{ time.Format "01/2006" .startdate }} - {{ time.Format "01/2006" .enddate }}
+            </div>
+            <div class="flex-auto w-7/12">
+                {{ .position }} ({{ .company }})
 
-            {{ if .achievements }}
-            <ul class="list-disc list-inside">{{ range .achievements }}<li class="text-justify">{{ . }}</li>{{ end }}</ul>
-            {{ end }}
+                {{ if .achievements }}
+                <ul class="list-disc list-inside">{{ range .achievements }}<li>{{ . }}</li>{{ end }}</ul>
+                {{ end }}
+            </div>
         </div>
-    </div>
-    {{ end }}
-    {{ end }}
+        {{ end }}
+        {{ end }}
     </div>
     {{ end }}
     <br>
