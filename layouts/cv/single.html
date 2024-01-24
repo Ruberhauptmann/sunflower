@@ -2,141 +2,135 @@
 
 <article class="max-w-prose justify-self-center mx-auto mb-16 px-6 sm:px-4 md:px-0 space-y-2 mt-8">
     <h1 class="text-4xl font-bold">{{ .Title }}</h1>
-    <br>
 
     {{ .Content }}
 
     {{ if .Site.Params.cv.general }}
-    <div class="relative p-7">
-        <div class="block absolute -inset-1 -skew-y-2 bg-primary" aria-hidden="true"></div>
-        <div class="flex relative text-primary-content">
-            {{ if .Site.Data.general.en.website }}
-            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
-                Website
-            </div>
-            <div class="flex-auto w-7/12 sm:w-2/3">
-                <a href="https://{{ .Site.Data.general.en.website }}" class="link link-hover">{{ .Site.Data.general.en.website }}</a>
-            </div>
-            {{ end }}
+    {{ if .Site.Data.general.en.website }}
+    <div class="flex">
+        <div class="w-5/12 sm:w-1/3 text-right mr-4">
+            Website
         </div>
-
-        {{ if .Site.Data.general.en.email }}
-        <div class="flex relative text-primary-content">
-            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
-                Email</div>
-            <div class="flex-auto w-7/12 sm:w-2/3">
-                <a href="mailto:{{ .Site.Data.general.email }}" class="link link-hover">{{ .Site.Data.general.en.email }}</a>
-            </div>
-            {{ end }}
+        <div class="w-7/12 sm:w-2/3">
+            <a href="https://{{ .Site.Data.general.en.website }}" class="link link-hover">{{ .Site.Data.general.en.website }}</a>
         </div>
-
-        {{ range $name, $url := .Site.Data.general.en.other_links }}
-        <div class="flex relative text-primary-content">
-            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
-                {{ $name }}
-            </div>
-            <div class="flex-auto w-7/12 sm:w-2/3">
-                <a href="https://{{ $url }}" class="link link-hover">{{ $url }}</a>
-            </div>
-        </div>
-        {{ end }}
     </div>
     {{ end }}
-    <br>
+
+    {{ if .Site.Data.general.en.email }}
+    <div class="flex">
+        <div class="w-5/12 sm:w-1/3 text-right mr-4">
+            Email</div>
+        <div class="w-7/12 sm:w-2/3">
+            <a href="mailto:{{ .Site.Data.general.email }}" class="link link-hover">{{ .Site.Data.general.en.email }}</a>
+        </div>
+    </div>
+    {{ end }}
+
+    {{ range $name, $url := .Site.Data.general.en.other_links }}
+    <div class="flex">
+        <div class="w-5/12 sm:w-1/3 text-right mr-4">
+            {{ $name }}
+        </div>
+        <div class="w-7/12 sm:w-2/3">
+            <a href="https://{{ $url }}" class="link link-hover">{{ $url }}</a>
+        </div>
+    </div>
+    {{ end }}
+    {{ end }}
 
     {{ if .Site.Params.cv.education }}
     <div class="divider divider-primary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Education</h2></div>
-    <br>
 
-    {{ if .Site.Data.education.en.current }}
-    {{ range sort .Site.Data.education.en.current "date" "desc" }}
-    <div class="relative p-3">
-        <div class="block absolute -inset-1 skew-y-2 bg-secondary" aria-hidden="true"></div>
-        <div class="flex relative text-secondary-content">
-            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
-                since {{ time.Format "01/2006" .date }}
+    <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+        {{ if .Site.Data.education.en.current }}
+        {{ range sort .Site.Data.education.en.current "date" "desc" }}
+        <li>
+            <div class="timeline-middle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
             </div>
-            <div class="flex-auto w-7/12 sm:w-2/3">
-                {{ .name }} ({{ .institution }})
-
+            <div class="timeline-start md:text-end mb-10">
+                <time class="font-mono italic">since {{ time.Format "01/2006" .date }}</time>
+                <div class="text-lg font-black">{{ .name }} ({{ .institution }})</div>
                 {{ if .notes }}
                 <p class="text-justify">{{ .notes }}.</p>
                 {{ end }}
                 {{ if .appraisal }}<p>Final grade: {{ .appraisal }}</p>{{ end }}
             </div>
-        </div>
+            <hr/>
+        </li>
         {{ end }}
         {{ end }}
 
-        {{ if .Site.Data.education.en.former }}
+        {{ if .Site.Data.work_experience.en.former }}
         {{ range sort .Site.Data.education.en.former "date" "desc" }}
-        <div class="flex relative text-secondary-content">
-            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
-                {{ time.Format "01/2006" .date }}
+        <li>
+            <hr/>
+            <div class="timeline-middle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
             </div>
-            <div class="flex-auto w-7/12 sm:w-2/3">
-                {{ .name }} ({{ .institution }})
-
+            <div class="timeline-end mb-10">
+                <time class="font-mono italic">{{ time.Format "01/2006" .date }}</time>
+                <div class="text-lg font-black">
+                    {{ .name }} ({{ .institution }})
+                </div>
                 {{ if .notes }}
                 <p class="text-justify">{{ .notes }}.</p>
                 {{ end }}
 
                 {{ if .appraisal }}<p>Final grade: {{ .appraisal }}</p>{{ end }}
             </div>
-        </div>
+            <hr />
+        </li>
         {{ end }}
         {{ end }}
-    </div>
+    </ul>
     {{ end }}
-    <br>
 
     {{ if .Site.Params.cv.work_experience }}
     <div class="divider divider-secondary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Employment</h2></div>
-    <br>
-
-    {{ if .Site.Data.work_experience.en.current }}
-    {{ range sort .Site.Data.work_experience.en.current "startdate" "desc" }}
-    <div class="relative p-7">
-        <div class="block absolute -inset-1 -skew-y-2 bg-primary" aria-hidden="true"></div>
-        <div class="flex relative text-primary-content">
-            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
-                since {{ time.Format "01/2006" .startdate }}
+    <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+        {{ if .Site.Data.work_experience.en.current }}
+        {{ range sort .Site.Data.work_experience.en.current "startdate" "desc" }}
+        <li>
+            <div class="timeline-middle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
             </div>
-
-            <div class="flex-auto w-7/12">
-            {{ .position }} ({{ .company }})
-
-            {{ if .achievements }}
-            <ul class="list-disc list-inside">{{ range .achievements }}<li>{{ . }}</li>{{ end }}</ul>
-            {{ end }}
-        </div>
-    </div>
-    {{ end }}
-    {{ end }}
-
-    {{ if .Site.Data.work_experience.en.former }}
-    {{ range sort .Site.Data.work_experience.en.former "startdate" "desc" }}
-        <div class="flex relative text-primary-content">
-            <div class="flex-auto w-5/12 sm:w-1/3 text-right pr-4">
-                {{ time.Format "01/2006" .startdate }} - {{ time.Format "01/2006" .enddate }}
-            </div>
-            <div class="flex-auto w-7/12">
-                {{ .position }} ({{ .company }})
-
+            <div class="timeline-start md:text-end mb-10">
+                <time class="font-mono italic">since {{ time.Format "01/2006" .startdate }}</time>
+                <div class="text-lg font-black">{{ .position }} ({{ .company }})</div>
                 {{ if .achievements }}
                 <ul class="list-disc list-inside">{{ range .achievements }}<li>{{ . }}</li>{{ end }}</ul>
                 {{ end }}
             </div>
-        </div>
+            <hr/>
+        </li>
         {{ end }}
         {{ end }}
-    </div>
+
+        {{ if .Site.Data.work_experience.en.former }}
+        {{ range sort .Site.Data.work_experience.en.former "startdate" "desc" }}
+        <li>
+            <hr/>
+            <div class="timeline-middle">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+            </div>
+            <div class="timeline-end mb-10">
+                <time class="font-mono italic">{{ time.Format "01/2006" .startdate }} - {{ time.Format "01/2006" .enddate }}</time>
+                <div class="text-lg font-black">{{ .position }} ({{ .company }})</div>
+                {{ if .achievements }}
+                <ul class="list-disc list-inside">{{ range .achievements }}<li>{{ . }}</li>{{ end }}</ul>
+                {{ end }}
+            </div>
+            <hr />
+        </li>
+        {{ end }}
+        {{ end }}
+    </ul>
     {{ end }}
-    <br>
 
     {{ if .Site.Params.cv.publications }}
     <div class="divider divider-secondary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Publications</h2></div>
-    <br>
 
     {{ range .Site.Data.publications }}
     <p>

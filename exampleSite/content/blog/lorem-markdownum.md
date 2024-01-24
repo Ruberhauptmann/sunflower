@@ -1,5 +1,5 @@
 +++
-title = "Lorem Markdownum"
+title = "Ein Post mit einem langen Titel der eventuell über mehrere Zeilen geht"
 author = "Dirk Olbrich"
 date = 2021-01-07
 categories = ["Blog"]
