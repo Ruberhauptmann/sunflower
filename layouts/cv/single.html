@@ -117,7 +117,7 @@
         {{ end }}
 
         {{ if .Site.Data.work_experience.en.former }}
-        {{ $list := (sort .Site.Data.work_experience.en.former "startdate" "desc") }}
+        {{ $list := (sort .Site.Data.work_experience.en.former "enddate" "desc") }}
         {{ $len := (len $list) }}
 
         {{ range $index, $element := $list }}
