@@ -50,8 +50,13 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-primary"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
             </div>
             <div class="timeline-start md:text-end mb-10">
-                <time class="font-mono italic">since {{ time.Format "01/2006" .date }}</time>
-                <div class="text-lg font-black">{{ .name }} ({{ .institution }})</div>
+                <time class="font-mono text-sm">since {{ time.Format "01/2006" .date }}</time>
+                <div class="text-lg font-extrabold">
+                    {{ .name }}
+                </div>
+                <div class="text-lg font-extrabold">
+                    {{ .institution }}
+                </div>
                 {{ if .notes }}
                 <p class="text-justify">{{ .notes }}.</p>
                 {{ end }}
@@ -62,7 +67,7 @@
         {{ end }}
         {{ end }}
 
-        {{ if .Site.Data.work_experience.en.former }}
+        {{ if .Site.Data.education.en.former }}
         {{ $list := (sort .Site.Data.education.en.former "date" "desc") }}
         {{ $len := (len $list) }}
 
@@ -77,9 +82,12 @@
             {{ else }}
             <div class="timeline-start md:text-end mb-10">
             {{ end }}
-                <time class="font-mono italic">{{ time.Format "01/2006" .date }}</time>
-                <div class="text-lg font-black">
-                    {{ .name }} ({{ .institution }})
+                <time class="font-mono text-sm">{{ time.Format "01/2006" .date }}</time>
+                <div class="text-lg font-extrabold">
+                    {{ .name }}
+                </div>
+                <div class="text-lg font-extrabold">
+                    {{ .institution }}
                 </div>
                 {{ if .notes }}
                 <p class="text-justify">{{ .notes }}.</p>
@@ -105,8 +113,13 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-secondary"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
             </div>
             <div class="timeline-start md:text-end mb-10">
-                <time class="font-mono italic">since {{ time.Format "01/2006" .startdate }}</time>
-                <div class="text-lg font-black">{{ .position }} ({{ .company }})</div>
+                <time class="font-mono text-sm">since {{ time.Format "01/2006" .startdate }}</time>
+                <div class="text-lg font-extrabold">
+                    {{ .company }}
+                </div>
+                <div class="text-lg font-extrabold">
+                    {{ .position }}
+                </div>
                 {{ if .achievements }}
                 <ul class="list-disc list-inside">{{ range .achievements }}<li>{{ . }}</li>{{ end }}</ul>
                 {{ end }}
@@ -131,8 +144,13 @@
             {{ else }}
             <div class="timeline-start md:text-end mb-10">
             {{ end }}
-                <time class="font-mono italic">{{ time.Format "01/2006" .startdate }} - {{ time.Format "01/2006" .enddate }}</time>
-                <div class="text-lg font-black">{{ .position }} ({{ .company }})</div>
+                <time class="font-mono text-sm">{{ time.Format "01/2006" .startdate }} - {{ time.Format "01/2006" .enddate }}</time>
+                <div class="text-lg font-extrabold">
+                    {{ .company }}
+                </div>
+                <div class="text-lg font-extrabold">
+                    {{ .position }}
+                </div>
                 {{ if .achievements }}
                 <ul class="list-disc list-inside">{{ range .achievements }}<li>{{ . }}</li>{{ end }}</ul>
                 {{ end }}
