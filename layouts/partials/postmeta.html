@@ -28,13 +28,13 @@
     {{ end }}
   </p>
 
-  <h2 class="text-3xl">
+  <h2 class="text-2xl">
     <a href="{{ .Permalink }}" class="link link-hover line-clamp-2">{{ .Title }}</a>
   </h2>
 
   {{ if .Params.series }}
   <p>
-    in <a href="{{ $.Site.BaseURL }}series/{{ .Params.series | urlize }}/" class="link link-hover">{{ .Params.series }}</a>
+    in <a href="{{ $.Site.BaseURL }}series/{{ .Params.series | urlize }}/" class="link link-hover font-semibold">{{ .Params.series }}</a>
   </p>
   {{ end }}
 
