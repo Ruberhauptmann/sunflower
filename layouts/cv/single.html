@@ -6,6 +6,7 @@
     {{ .Content }}
 
     {{ if .Site.Params.cv.general }}
+    <div class="grid grid-cols-1 md:grid-cols-2">
     {{ if .Site.Data.general.en.website }}
     <div class="flex">
         <div class="w-5/12 sm:w-1/3 text-right mr-4">
@@ -38,9 +39,25 @@
     </div>
     {{ end }}
     {{ end }}
+    </div>
 
     {{ if .Site.Params.cv.education }}
     <div class="divider divider-primary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Education</h2></div>
+
+    <ul>
+        {{ if .Site.Data.education.en.current }}
+        {{ range sort .Site.Data.education.en.current "date" "desc" }}
+        <li class="flex">
+            <span class="flex-auto">since {{ time.Format "01/2006" .date }}</span>
+            <span class="flex-auto">{{ .name }} {{ .institution }}</span>
+            {{ if .notes }}
+            <p class="text-justify">{{ .notes }}.</p>
+            {{ end }}
+            {{ if .appraisal }}<p>Final grade: {{ .appraisal }}</p>{{ end }}
+        </li>
+        {{ end }}
+        {{ end }}
+    </ul>
 
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
         {{ if .Site.Data.education.en.current }}

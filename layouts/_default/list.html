@@ -1,11 +1,5 @@
 {{ define "main" }}
 
-{{ if .IsHome }}
-{{ $pag := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-{{ else }}
-{{ $pag := .Paginator.Pages }}
-{{ end }}
-
 <article class="max-w-7xl mx-auto my-5 px-6">
     <article class="prose pb-2">
         <h1>{{ .Title }}</h1>
@@ -13,32 +7,26 @@
         {{ .Content }}
     </article>
 
-    <div class="max-w-7xl mx-auto my-5">
-        <div class="flex flex-wrap justify-left my-5">
-            {{ range .Paginator.Pages }}
-            <div class="w-2/5 h-60 shadow-sm bg-secondary text-secondary-content mx-2 my-2 rounded-2xl">
-                <div class="p-4">
-                    {{ partial "postmeta.html" . }}
-                    <p class="line-clamp-3 text-justify">{{ .Summary }}</p>
-                </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-2 justify-center">
+        {{ range .Paginator.Pages }}
+        <div class="h-60 shadow-sm bg-secondary text-secondary-content rounded-2xl">
+            <div class="p-4">
+                {{ partial "postmeta.html" . }}
+                <p class="line-clamp-3 text-justify">{{ .Summary }}</p>
             </div>
-            {{ end }}
         </div>
+        {{ end }}
     </div>
 
     {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-    <ul class="pager">
+    <div class="join grid grid-cols-2 w-40">
         {{ if .Paginator.HasPrev }}
-        <li class="previous">
-            <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; Newer</a>
-        </li>
+        <a role="button" class="join-item btn btn-outline" href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">Newer</a>
         {{ end }}
         {{ if .Paginator.HasNext }}
-        <li class="next">
-            <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">Older &rarr;</a>
-        </li>
+        <a role="button" class="join-item btn btn-outline" href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">Older</a>
         {{ end }}
-    </ul>
+    </div>
     {{ end }}
 </article>
 {{ end }}

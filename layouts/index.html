@@ -2,23 +2,34 @@
 
 <div class="hero min-h-screen bg-center bg-cover" style="background-image: url('{{ .Site.Params.hero }}')">
     <div class="hero-overlay bg-opacity-60"></div>
-    <div class="hero-content text-center text-neutral-content p-10 mx-4 backdrop-blur-xl">
+    <div class="hero-content text-center text-neutral-content p-8 mx-4 backdrop-blur-xl">
         <div class="max-w-md">
             <h1 class="text-5xl font-bold">{{ .Site.Title }}</h1>
-            <p class="py-6">{{ .Site.Params.Abstract }}</p>
+            <p class="py-3">{{ .Site.Params.Abstract }}</p>
+            <ul class="menu menu-horizontal bg-transparent rounded-box">
+                <li><a href="mailto:{{ .Site.Params.social.email.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Email"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a></li>
+                <li><a href="{{ .Site.Params.social.orcid.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Orcid"><i class="fa fa-orcid fa-2x" aria-hidden="true"></i></a></li>
+                <li><a href="{{ .Site.Params.social.gitlab.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Gitlab"><i class="fa fa-gitlab fa-2x" aria-hidden="true"></i></a></li>
+                <li><a href="{{ .Site.Params.social.linkedin.link }}" target="_blank" class="tooltip tooltip-right" data-tip="LinkedIn"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
+                <li><a href="{{ .Site.Params.cv.download }}" target="_blank" class="tooltip tooltip-right" data-tip="CV"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a></li>
+            </ul>
         </div>
     </div>
 </div>
 
-<div class="flex flex-wrap justify-center my-5">
-    {{ range where .Site.RegularPages "Section" "in" .Site.Params.MainSections }}
-    <div class="w-96 h-60 shadow-sm bg-secondary text-secondary-content mx-2 my-2 rounded-2xl">
-        <div class="p-4">
-            {{ partial "postmeta.html" . }}
-            <p class="line-clamp-3 text-justify">{{ .Summary }}</p>
+<article class="max-w-7xl mx-auto my-5 px-6">
+    <h2 class="text-3xl">Recent posts</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-2">
+        {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+        {{ range $paginator.Pages }}
+        <div class="h-60 shadow-sm bg-secondary text-secondary-content rounded-2xl">
+            <div class="p-4">
+                {{ partial "postmeta.html" . }}
+                <p class="line-clamp-3 text-justify">{{ .Summary }}</p>
+            </div>
         </div>
+        {{ end }}
     </div>
-    {{ end }}
-</div>
+</article>
 
 {{ end }}
