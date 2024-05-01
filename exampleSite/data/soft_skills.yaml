@@ -2,12 +2,12 @@ en:
   python:
     name: Python
     projects:
-      saboga:
-        description: An overview of boardgames, built using FastAPI.
-        link: gitlab.com/Ruberhauptmann/saboga-api
+      project-1:
+        description: Some project
+        link: link
   docker:
     name: Docker
     projects:
-      tjarksievers.de:
-        description:
-        link: https://gitlab.com/Ruberhauptmann/tjarksievers.de
+      project-2:
+        description: Some project
+        link: link

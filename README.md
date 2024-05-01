@@ -1,6 +1,6 @@
 # Sunflower theme
 
-![Screenshot of the home page](images/screenshot.png)
+![Screenshot of the home page](https://gitlab.com/Ruberhauptmann/sunflower/-/raw/main/images/screenshot.png)
 
 A clean Hugo theme with yellows and greens using TailwindCSS and DaisyUI components.
 
