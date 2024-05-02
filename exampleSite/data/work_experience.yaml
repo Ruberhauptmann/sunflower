@@ -4,8 +4,8 @@ en:
       position: "Junior Developer"
       company: "SoftWare"
       achievements:
-        - "Did other stuff"
         - "Did a lot more stuff. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id iaculis ligula, id finibus dui. Nulla mauris diam, condimentum non felis sit amet, convallis sagittis risus. Donec sit amet ex at velit vehicula aliquam et in nisi. Nulla facilisi. Nunc pharetra nibh a mollis hendrerit. Pellentesque in dui tempus, luctus sapien ut, ultrices lectus"
+        - "Did other stuff"
       location: "Citycity"
       startdate: 2019-12-01
   former:

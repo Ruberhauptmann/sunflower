@@ -5,17 +5,18 @@ en:
       institution: "City University"
       location: "Citycity"
       date: 2022-10-01
+      grade: "1.5"
   former:
     bachelor:
       name: "B.Sc."
       institution: "City University"
       location: "Citycity"
       date: 2022-07-01
-      appraisal: "1.47"
+      grade: "1.47"
       notes: "Thesis: Blablablabla"
     abitur:
       name: "A-levels"
       institution: "Townschool"
       location: "Towntown"
       date: 2018-07-10
-      appraisal: 2.1
+      grade: 2.1
