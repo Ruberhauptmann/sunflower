@@ -7,22 +7,11 @@
 
     {{ if .Site.Params.cv.general }}
     <div class="grid grid-cols-1 md:grid-cols-2">
-    {{ if .Site.Data.general.en.website }}
-    <div class="flex">
-        <div class="w-5/12 sm:w-1/4 text-right mr-4">
-            Website
-        </div>
-        <div class="w-7/12 sm:w-3/4">
-            <a href="https://{{ .Site.Data.general.en.website }}" class="link link-hover">{{ .Site.Data.general.en.website }}</a>
-        </div>
-    </div>
-    {{ end }}
-
     {{ if .Site.Data.general.en.email }}
     <div class="flex">
-        <div class="w-5/12 sm:w-1/4 text-right mr-4">
+        <div class="w-2/12 text-right mr-3">
             Email</div>
-        <div class="w-7/12 sm:w-3/4">
+        <div class="w-10/12">
             <a href="mailto:{{ .Site.Data.general.email }}" class="link link-hover">{{ .Site.Data.general.en.email }}</a>
         </div>
     </div>
@@ -30,10 +19,10 @@
 
     {{ range $name, $url := .Site.Data.general.en.other_links }}
     <div class="flex">
-        <div class="w-5/12 sm:w-1/4 text-right mr-4">
+        <div class="w-2/12 text-right mr-3">
             {{ $name }}
         </div>
-        <div class="w-7/12 sm:w-3/4">
+        <div class="w-10/12">
             <a href="https://{{ $url }}" class="link link-hover">{{ $url }}</a>
         </div>
     </div>
@@ -127,17 +116,26 @@
     </ul>
     {{ end }}
 
-    {{ if .Site.Params.cv.soft_skills }}
+    {{ if .Site.Params.cv.technical_skills }}
     <div class="divider divider-primary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Soft Skills</h2></div>
 
     <ul>
-        {{ if .Site.Data.soft_skills.en }}
-        {{ range .Site.Data.soft_skills.en }}
-        <li class="flex">
-            <span class="flex-auto w-5/12 sm:w-1/3 lg:w-1/4 text-right mr-4">{{ .name }}</span>
-            <span class="flex-auto w-7/12 sm:w-2/3 lg:w-3/4"></span>
+        {{ if .Site.Data.technical_skills.en }}
+        {{ range .Site.Data.technical_skills.en }}
+        <li class="my-2">
+            {{ .name }}
         </li>
-        {{ end }} {{ end }}
+            {{ if .projects }}
+        <li>
+            <div class="w-full">
+                <ul class="list-disc list-inside">
+                    {{ range .projects }}
+                    <li>{{ .description }} (<a href="https://{{ .link }}" class="link">More information</a>)</li>
+                    {{ end }}
+                </ul>
+            </div>
+        </li>
+        {{ end }} {{ end }} {{ end }}
     </ul>
     {{ end }}
 
