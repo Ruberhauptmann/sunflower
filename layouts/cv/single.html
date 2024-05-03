@@ -136,12 +136,12 @@
         {{ if .Site.Data.technical_skills.en }}
         {{ range sort .Site.Data.technical_skills.en "name" "asc" }}
         <li class="my-2">
-            {{ .name }}
+            <span class="font-semibold">{{ .name }}</span>
         {{ if .projects }}
             <div class="w-full">
                 <ul class="list-disc list-inside">
                     {{ range sort .projects "name" "asc" }}
-                    <li>{{ .name}}: {{ .description }} (<a href="https://{{ .link }}" target="_blank" class="link">More information</a>)</li>
+                    <li><a href="https://{{ .link }}" target="_blank" class="link">{{ .name}}<a>: {{ .description }}</li>
                     {{ end }}
                 </ul>
             </div>
