@@ -3,11 +3,13 @@ en:
     name: Python
     projects:
       project-1:
+        name: Project 1
         description: Some project
         link: link
   docker:
     name: Docker
     projects:
       project-2:
+        name: Project 2
         description: Some project
         link: link
