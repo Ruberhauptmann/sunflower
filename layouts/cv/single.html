@@ -137,9 +137,7 @@
         {{ range sort .Site.Data.technical_skills.en "name" "asc" }}
         <li class="my-2">
             {{ .name }}
-        </li>
-            {{ if .projects }}
-        <li>
+        {{ if .projects }}
             <div class="w-full">
                 <ul class="list-disc list-inside">
                     {{ range sort .projects "name" "asc" }}
