@@ -141,7 +141,7 @@
             <div class="w-full">
                 <ul class="list-disc list-inside">
                     {{ range sort .projects "name" "asc" }}
-                    <li><a href="https://{{ .link }}" target="_blank" class="link">{{ .name}}<a>: {{ .description }}</li>
+                    <li><a href="https://{{ .link }}" target="_blank" class="link">{{ .name}}</a>: {{ .description }}</li>
                     {{ end }}
                 </ul>
             </div>

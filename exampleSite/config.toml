@@ -5,7 +5,7 @@ title = "Sunflower Example Site"
 
 copyright = "Copyright © 2024, Joe Bob, all rights reserved."
 
-paginate = 9
+paginate = 2
 
 [params]
   favicon = "sunflower.png"
