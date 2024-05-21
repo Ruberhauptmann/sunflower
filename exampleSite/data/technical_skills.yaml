@@ -5,7 +5,7 @@ en:
       projects:
         project-1:
           name: Project 1
-          description: Some project
+          description:
           link: link
   other:
     docker:

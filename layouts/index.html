@@ -3,7 +3,10 @@
 <div class="hero min-h-screen bg-center bg-cover" style="background-image: url('{{ .Site.Params.hero }}')">
     <div class="hero-overlay bg-opacity-60"></div>
     <div class="hero-content text-center text-neutral-content p-8 mx-4 backdrop-blur-xl">
-        <div class="max-w-md">
+        {{ if .Site.Params.profile }}
+            <img class="mask mask-circle h-60" src="{{ .Site.Params.profile }}"/>
+        {{ end }}
+        <div class="max-w-md ">
             <h1 class="text-5xl font-bold">{{ .Site.Title }}</h1>
             <p class="py-3">{{ .Site.Params.Abstract }}</p>
             <ul class="menu menu-horizontal bg-transparent rounded-box">
@@ -13,6 +16,7 @@
                 <li><a href="{{ .Site.Params.social.linkedin.link }}" target="_blank" class="tooltip tooltip-right" data-tip="LinkedIn"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
                 <li><a href="{{ .Site.Params.cv.download }}" target="_blank" class="tooltip tooltip-right" data-tip="CV"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a></li>
             </ul>
+
         </div>
     </div>
 </div>
