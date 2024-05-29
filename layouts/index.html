@@ -3,22 +3,23 @@
 <div class="hero min-h-screen bg-center bg-cover" style="background-image: url('{{ .Site.Params.hero }}')">
     <div class="hero-overlay bg-opacity-60"></div>
     <div class="hero-content text-center text-neutral-content p-8 mx-4 backdrop-blur-xl">
-        {{ if .Site.Params.profile }}
-        <span class="h-80">
-            <img class="mask mask-circle h-80" src="{{ .Site.Params.profile }}"/>
-        </span>
-        {{ end }}
-        <div class="max-w-md ">
-            <h1 class="text-5xl font-bold">{{ .Site.Title }}</h1>
-            <p class="py-3">{{ .Site.Params.Abstract }}</p>
-            <ul class="menu menu-horizontal bg-transparent rounded-box">
-                <li><a href="mailto:{{ .Site.Params.social.email.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Email"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a></li>
-                <li><a href="{{ .Site.Params.social.orcid.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Orcid"><i class="fa fa-orcid fa-2x" aria-hidden="true"></i></a></li>
-                <li><a href="{{ .Site.Params.social.github.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Gitlab"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
-                <li><a href="{{ .Site.Params.social.linkedin.link }}" target="_blank" class="tooltip tooltip-right" data-tip="LinkedIn"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
-                <li><a href="{{ .Site.Params.cv.download }}" target="_blank" class="tooltip tooltip-right" data-tip="CV"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a></li>
-            </ul>
-
+        <div class="flex flex-wrap gap-4 justify-center">
+            {{ if .Site.Params.profile }}
+            <span class="h-80">
+                <img class="mask mask-circle h-80" src="{{ .Site.Params.profile }}"/>
+            </span>
+            {{ end }}
+            <div class="max-w-md ">
+                <h1 class="text-5xl font-bold">{{ .Site.Title }}</h1>
+                <p class="py-3">{{ .Site.Params.Abstract }}</p>
+                <ul class="menu menu-horizontal bg-transparent rounded-box">
+                    <li><a href="mailto:{{ .Site.Params.social.email.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Email"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ .Site.Params.social.orcid.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Orcid"><i class="fa fa-orcid fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ .Site.Params.social.github.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Gitlab"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ .Site.Params.social.linkedin.link }}" target="_blank" class="tooltip tooltip-right" data-tip="LinkedIn"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ .Site.Params.cv.download }}" target="_blank" class="tooltip tooltip-right" data-tip="CV"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
