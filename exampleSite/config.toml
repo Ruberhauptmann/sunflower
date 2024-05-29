@@ -20,8 +20,8 @@ paginate = 2
 [params.social.email]
   link = "#email"
 
-[params.social.gitlab]
-  link = "#gitlab"
+[params.social.github]
+  link = "#github"
 
 [params.social.linkedin]
   link = "#linkedin"
