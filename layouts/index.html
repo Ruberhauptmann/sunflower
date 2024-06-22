@@ -15,7 +15,7 @@
                 <ul class="menu menu-horizontal bg-transparent rounded-box">
                     <li><a href="mailto:{{ .Site.Params.social.email.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Email"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a></li>
                     <li><a href="{{ .Site.Params.social.orcid.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Orcid"><i class="fa fa-orcid fa-2x" aria-hidden="true"></i></a></li>
-                    <li><a href="{{ .Site.Params.social.github.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Gitlab"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ .Site.Params.social.github.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
                     <li><a href="{{ .Site.Params.social.linkedin.link }}" target="_blank" class="tooltip tooltip-right" data-tip="LinkedIn"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
                     <li><a href="{{ .Site.Params.cv.download }}" target="_blank" class="tooltip tooltip-right" data-tip="CV"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a></li>
                 </ul>
@@ -24,7 +24,7 @@
     </div>
 </div>
 
-<article class="max-w-7xl mx-auto my-5 px-6">
+<article class="max-w-screen-lg mx-auto my-5 px-6">
     <h2 class="text-3xl">Recent posts</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-2">
         {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}

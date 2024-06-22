@@ -145,20 +145,24 @@
 
     <ul>
         {{ if .Site.Data.technical_skills.en }}
-        {{ range .Site.Data.technical_skills.en }}
-        {{ range sort . "name" "asc" }}
-        <li class="my-2">
-            <span class="font-semibold">{{ .name }}</span>
-        {{ if .projects }}
-            <div class="w-full">
-                <ul class="list-disc list-inside">
-                    {{ range sort .projects "name" "asc" }}
-                    <li><a href="https://{{ .link }}" target="_blank" class="link">{{ .name}}</a>{{ if .description }}: {{ .description }}{{ end }}</li>
-                    {{ end }}
-                </ul>
-            </div>
+        {{ range $key, $value := .Site.Data.technical_skills.en }}
+        <li><span class="text-lg font-semibold">{{ $key | humanize }}</span>
+            {{ range sort $value "name" "asc" }}
+            <ul>
+                <li class="my-2">
+                    <span class="font-semibold">{{ .name }}</span>
+                    {{ if .projects }}
+                    <div class="w-full">
+                        <ul class="list-disc list-inside">
+                            {{ range sort .projects "name" "asc" }}
+                            <li><a href="https://{{ .link }}" target="_blank" class="link">{{ .name}}</a>{{ if .description }}: {{ .description }}{{ end }}</li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </li>
+                {{ end }} {{ end }} {{ end }} {{ end }}
+            </ul>
         </li>
-        {{ end }} {{ end }} {{ end }} {{ end }}
     </ul>
     {{ end }}
 

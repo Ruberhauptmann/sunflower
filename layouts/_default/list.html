@@ -1,11 +1,13 @@
 {{ define "main" }}
 
-<article class="max-w-7xl mx-auto my-5 px-6">
-    <article class="prose pb-2">
+<article class="max-w-screen-lg mx-auto my-5 px-6">
+    <article class="max-w-prose mx-auto prose pb-2">
         <h1>{{ .Title }}</h1>
 
         {{ .Content }}
     </article>
+
+    <div class="divider"></div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-2 justify-center">
         {{ range .Paginator.Pages }}
