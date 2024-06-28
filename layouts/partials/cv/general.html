@@ -1,0 +1,34 @@
+<div class="grid grid-cols-1">
+
+    {{ if .Site.Data.general.en.website }}
+    <div class="flex">
+        <div class="w-1/6 text-right mr-3">
+            Website
+        </div>
+        <div class="w-5/6">
+            <a href="https://{{ .Site.Data.general.en.website }}" class="link">{{ .Site.Data.general.en.website }}</a>
+        </div>
+    </div>
+    {{ end }}
+
+    {{ if .Site.Data.general.en.email }}
+    <div class="flex">
+        <div class="w-1/6 text-right mr-3">
+            Email</div>
+        <div class="w-5/6">
+            <a href="mailto:{{ .Site.Data.general.en.email }}" class="link">{{ .Site.Data.general.en.email }}</a>
+        </div>
+    </div>
+    {{ end }}
+
+    {{ range $name, $url := .Site.Data.general.en.other_links }}
+    <div class="flex">
+        <div class="w-1/6 text-right mr-3">
+            {{ $name }}
+        </div>
+        <div class="w-5/6">
+            <a href="https://{{ $url }}" class="link">{{ $url }}</a>
+        </div>
+    </div>
+    {{ end }}
+</div>

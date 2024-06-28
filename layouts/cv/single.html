@@ -7,165 +7,27 @@
 
 
     {{ if .Site.Params.cv.general }}
-    <div class="grid grid-cols-1">
-
-    {{ if .Site.Data.general.en.website }}
-    <div class="flex">
-        <div class="w-1/6 text-right mr-3">
-            Website
-        </div>
-        <div class="w-5/6">
-            <a href="https://{{ .Site.Data.general.en.website }}" class="link link-hover">{{ .Site.Data.general.en.website }}</a>
-        </div>
-    </div>
+        {{- partial "cv/general.html" . -}}
     {{ end }}
-
-    {{ if .Site.Data.general.en.email }}
-    <div class="flex">
-        <div class="w-1/6 text-right mr-3">
-            Email</div>
-        <div class="w-5/6">
-            <a href="mailto:{{ .Site.Data.general.en.email }}" class="link link-hover">{{ .Site.Data.general.en.email }}</a>
-        </div>
-    </div>
-    {{ end }}
-
-    {{ if .Site.Data.general.en.orcid }}
-    <div class="flex">
-        <div class="w-1/6 text-right mr-3">
-            Orcid
-        </div>
-        <div class="w-5/6">
-            <a href="https://{{ .Site.Data.general.en.orcid }}" class="link link-hover">{{ .Site.Data.general.en.orcid }}</a>
-        </div>
-    </div>
-    {{ end }}
-
-    {{ range $name, $url := .Site.Data.general.en.other_links }}
-    <div class="flex">
-        <div class="w-1/6 text-right mr-3">
-            {{ $name }}
-        </div>
-        <div class="w-5/6">
-            <a href="https://{{ $url }}" class="link link-hover">{{ $url }}</a>
-        </div>
-    </div>
-    {{ end }}
-    {{ end }}
-    </div>
 
     {{ if .Site.Params.cv.education }}
     <div class="divider divider-primary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Education</h2></div>
+        {{- partial "cv/education.html" . -}}
+    {{ end }}
 
-    <ul>
-        {{ if .Site.Data.education.en.current }}
-        {{ range sort .Site.Data.education.en.current "date" "desc" }}
-        <li class="my-2">
-            <ul>
-                <li><span class="font-light">since {{ time.Format "01/2006" .date }}</span></li>
-                <li><span class="font-semibold">{{ .name }}</span>, {{ .institution }} ({{ .location }})</li>
-                {{ if or (.notes) (.grade) }}
-                <li>
-                    {{ if .notes }}{{ .notes }}.{{ end }}
-                    {{ if .grade }}Final grade: {{ .grade }} (expected){{ end }}
-                </li>
-                {{ end }}
-            </ul>
-        </li>
-        {{ end }} {{ end }}
-
-        {{ if .Site.Data.education.en.former }}
-        {{ range sort .Site.Data.education.en.former "date" "desc" }}
-        <li class="my-2">
-            <ul>
-                <li><span class="font-light">{{ time.Format "01/2006" .date }}</span></li>
-                <li><span class="font-semibold">{{ .name }}</span>, {{ .institution }} ({{ .location }})</li>
-                {{ if or (.notes) (.grade) }}
-                <li>
-                    {{ if .notes }}{{ .notes }}.{{ end }}
-                    {{ if .grade }}Final grade: {{ .grade }}{{ end }}
-                </li>
-                {{ end }}
-            </ul>
-        </li>
-        {{ end }} {{ end }}
-    </ul>
+    {{ if .Site.Params.cv.schools_conferences }}
+    <div class="divider divider-secondary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Schools and Conferences attended</h2></div>
+        {{- partial "cv/schools_conferences.html" . -}}
     {{ end }}
 
     {{ if .Site.Params.cv.work_experience }}
-    <div class="divider divider-secondary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Employment</h2></div>
-
-    <ul>
-    {{ if .Site.Data.work_experience.en.current }}
-    {{ range sort .Site.Data.work_experience.en.current "startdate" "desc" }}
-        <li class="my-2">
-            <ul>
-                <li><span class="font-light">since {{ time.Format "01/2006" .startdate }}</span></li>
-                <li><span class="font-semibold">{{ .position }}</span>, {{ .company }} ({{ .location }})</li>
-                {{ if .achievements }}
-                <li>
-                    <div class="w-full">
-                        <ul class="list-disc list-inside">
-                            {{ range .achievements }}
-                            <li>{{ . }}</li>
-                            {{ end }}
-                        </ul>
-                    </div>
-                </li>
-                {{ end }}
-            </ul>
-        </li>
-        {{ end }} {{ end }}
-
-        {{ if .Site.Data.work_experience.en.former }}
-        {{ range sort .Site.Data.work_experience.en.former "enddate" "desc" }}
-        <li class="my-2">
-            <ul>
-                <li><span class="font-light">{{ time.Format "01/2006" .startdate }} - {{ time.Format "01/2006" .enddate }}</span></li>
-                <li>{{ .position }}, {{ .company }} ({{ .location }})</li>
-                {{ if .achievements }}
-                <li>
-                    <div class="w-full">
-                        <ul class="list-disc list-inside">
-                            {{ range .achievements }}
-                            <li>{{ . }}</li>
-                            {{ end }}
-                        </ul>
-                    </div>
-                </li>
-                {{ end }}
-            </ul>
-        </li>
-        {{ end }} {{ end }}
-    </ul>
+    <div class="divider divider-primary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Employment</h2></div>
+        {{- partial "cv/work_experience.html" . -}}
     {{ end }}
 
     {{ if .Site.Params.cv.technical_skills }}
-    <div class="divider divider-primary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Technical Skills</h2></div>
-
-    <ul>
-        {{ if .Site.Data.technical_skills.en }}
-        {{ range $key, $value := .Site.Data.technical_skills.en }}
-        <li><span class="text-lg font-semibold">{{ $key | humanize }}</span>
-            {{ range sort $value "name" "asc" }}
-            <ul>
-                <li class="my-2">
-                    <span class="font-semibold">{{ .name }}</span>
-                    {{ if .projects }}
-                    <div class="w-full">
-                        <ul class="list-disc list-inside">
-                            {{ range sort .projects "name" "asc" }}
-                            <li><a href="https://{{ .link }}" target="_blank" class="link">{{ .name}}</a>{{ if .description }}: {{ .description }}{{ end }}</li>
-                            {{ end }}
-                        </ul>
-                    </div>
-                </li>
-                {{ end }} {{ end }} {{ end }} {{ end }}
-            </ul>
-        </li>
-    </ul>
+    <div class="divider divider-secondary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Technical Skills</h2></div>
+        {{- partial "cv/technical_skills.html" . -}}
     {{ end }}
-
-
 </article>
 {{ end }}

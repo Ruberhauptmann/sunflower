@@ -31,6 +31,7 @@ paginate = 2
   download = "#cvdownload"
   general = true
   education = true
+  schools_conferences = true
   work_experience = true
   technical_skills = true
 

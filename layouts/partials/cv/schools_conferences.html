@@ -1,0 +1,13 @@
+<ul>
+    {{ if .Site.Data.schools_conferences.en }}
+        {{ range .Site.Data.schools_conferences.en }}
+        <li class="my-2">
+            <ul>
+                <li><span class="font-light">{{ time.Format "01/2006" .enddate }}</span></li>
+                <li>{{ .location }}: <a class="link" href="https://{{ .url }}" target="_blank">{{ .name }}</a></li>
+                <li>{{ if .poster }}Poster: <a class="link" href="https://{{ .poster }}" target="_blank">{{ .poster_title }}</a>{{ end }}</li>
+            </ul>
+            {{ end }}
+        </li>
+    {{ end }}
+</ul>

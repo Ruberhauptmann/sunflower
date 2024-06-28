@@ -1,0 +1,33 @@
+<ul>
+    {{ if .Site.Data.education.en.current }}
+    {{ range sort .Site.Data.education.en.current "date" "desc" }}
+    <li class="my-2">
+        <ul>
+            <li><span class="font-light">since {{ time.Format "01/2006" .date }}</span></li>
+            <li><span class="font-semibold">{{ .name }}</span>, {{ .institution }} ({{ .location }})</li>
+            {{ if or (.notes) (.grade) }}
+            <li>
+                {{ if .notes }}{{ .notes }}.{{ end }}
+                {{ if .grade }}Final grade: {{ .grade }} (expected){{ end }}
+            </li>
+            {{ end }}
+        </ul>
+    </li>
+    {{ end }} {{ end }}
+
+    {{ if .Site.Data.education.en.former }}
+    {{ range sort .Site.Data.education.en.former "date" "desc" }}
+    <li class="my-2">
+        <ul>
+            <li><span class="font-light">{{ time.Format "01/2006" .date }}</span></li>
+            <li><span class="font-semibold">{{ .name }}</span>, {{ .institution }} ({{ .location }})</li>
+            {{ if or (.notes) (.grade) }}
+            <li>
+                {{ if .notes }}{{ .notes }}.{{ end }}
+                {{ if .grade }}Final grade: {{ .grade }}{{ end }}
+            </li>
+            {{ end }}
+        </ul>
+    </li>
+    {{ end }} {{ end }}
+</ul>

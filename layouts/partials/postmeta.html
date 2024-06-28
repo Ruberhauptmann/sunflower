@@ -18,7 +18,7 @@
 
   <p class="text-sm font-light">
     {{ if .Params.date_finished }}
-      Lecture finished {{ time.Format "January 2006" .Params.date_finished }}
+      Finished {{ time.Format "January 2006" .Params.date_finished }}
     {{ else }}
       {{ .Lastmod.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}
     {{ end }}

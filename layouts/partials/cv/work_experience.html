@@ -1,0 +1,43 @@
+<ul>
+    {{ if .Site.Data.work_experience.en.current }}
+    {{ range sort .Site.Data.work_experience.en.current "startdate" "desc" }}
+    <li class="my-2">
+        <ul>
+            <li><span class="font-light">since {{ time.Format "01/2006" .startdate }}</span></li>
+            <li><span class="font-semibold">{{ .position }}</span>, {{ .company }} ({{ .location }})</li>
+            {{ if .achievements }}
+            <li>
+                <div class="w-full">
+                    <ul class="list-disc list-inside">
+                        {{ range .achievements }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </li>
+            {{ end }}
+        </ul>
+    </li>
+    {{ end }} {{ end }}
+
+    {{ if .Site.Data.work_experience.en.former }}
+    {{ range sort .Site.Data.work_experience.en.former "enddate" "desc" }}
+    <li class="my-2">
+        <ul>
+            <li><span class="font-light">{{ time.Format "01/2006" .startdate }} - {{ time.Format "01/2006" .enddate }}</span></li>
+            <li>{{ .position }}, {{ .company }} ({{ .location }})</li>
+            {{ if .achievements }}
+            <li>
+                <div class="w-full">
+                    <ul class="list-disc list-inside">
+                        {{ range .achievements }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </li>
+            {{ end }}
+        </ul>
+    </li>
+    {{ end }} {{ end }}
+</ul>
