@@ -5,6 +5,7 @@ date = 2021-01-07
 categories = ["Blog"]
 tags = ["A tag"]
 series = "A series"
+image = "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
 +++
 
 ## Amens nitentior vires

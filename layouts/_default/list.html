@@ -9,14 +9,31 @@
 
     <div class="divider divider-primary"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 my-2 justify-center">
+
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 md:grid-flow-row-dense gap-2 my-2 justify-center">
         {{ range .Paginator.Pages }}
-        <div class="h-60 shadow-sm bg-secondary text-secondary-content rounded-2xl">
-            <div class="p-4">
-                {{ partial "postmeta.html" . }}
+        {{ if .Params.image }}
+            <div class="card md:card-side col-span-2 bg-secondary shadow-xl">
+                <figure class="h-full py-2 md:pl-2"><img class="h-full max-h-96 rounded-xl" src="{{ .Params.image }}" alt="Preview" /></figure>
+                <div class="card-body md:w-1/4 text-secondary-content">
+                    <div>
+                        {{ partial "postmeta.html" . }}
+                    </div>
+                    <p class="text-justify">{{ .Summary }}</p>
+                </div>
+            </div>
+        {{ else }}
+        <div class="card bg-secondary w-full shadow-xl">
+            <div class="card-body w-full h-full text-secondary-content">
+                <div>
+                    {{ partial "postmeta.html" . }}
+                </div>
                 <p class="line-clamp-3 text-justify">{{ .Summary }}</p>
             </div>
         </div>
+        {{ end }}
         {{ end }}
     </div>
 
