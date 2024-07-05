@@ -3,3 +3,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .BGGitem > a:first-child {
+        @apply h-32 flex-none pl-4 pt-4 flow-root;
+    }
+    .BGGitem a img {
+        @apply max-w-full max-h-full;
+    }
+    .BGGprovided a {
+        @apply link;
+    }
+    .BGGtitle a:first-child {
+        @apply text-xl link link-hover inline line-clamp-2;
+    }
+    .BGGtitle a:last-child {
+        @apply link link-hover text-sm;
+    }
+}
+
+@layer components {
+    .BGGitem {
+        @apply h-36 shadow-sm bg-secondary text-secondary-content rounded-2xl flex;
+    }
+    .BGGprovided {
+        @apply text-sm font-light;
+    }
+    .BGGtitle {
+        @apply flow-root flex-1 pt-4 px-1.5;
+    }
+    .BGGwrapper {
+        @apply grid grid-cols-1 md:grid-cols-2 gap-2 my-2;
+    }
+}

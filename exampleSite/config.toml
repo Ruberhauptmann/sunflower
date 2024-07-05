@@ -13,6 +13,8 @@ paginate = 2
   profile = "profile.jpg"
   mainSections = ["projects", "blog"]
   abstract = "This is a site showing the capacities of the sunflower theme for hugo."
+  bgg_username = "ourkindofart"
+  bgg_title = "Last boardgames played"
 
 [params.social.orcid]
   link = "#orcid"

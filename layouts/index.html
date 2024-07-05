@@ -27,7 +27,7 @@
 <article class="max-w-screen-lg mx-auto my-5 px-6">
     <h2 class="text-3xl">Recent posts</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 my-2">
-        {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+        {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) 4 }}
         {{ range $paginator.Pages }}
         <div class="h-60 shadow-sm bg-secondary text-secondary-content rounded-2xl">
             <div class="p-4">
@@ -37,6 +37,14 @@
         </div>
         {{ end }}
     </div>
+</article>
+
+<article class="max-w-screen-lg mx-auto my-5 px-6">
+    <h2 class="text-3xl">{{ .Site.Params.bgg_title }}</h2>
+
+    <script language="javascript" src="https://boardgamegeek.com/jswidget.php?username={{ .Site.Params.bgg_username}}&numitems=4&text=title&images=medium&show=recentplays&imagesonly=1&imagepos=left&showplaydate=1&domains%5B%5D=boardgame"></script>
+    <!-- Hidden classes for Tailwind compilation -->
+    <div class="hidden"><div class="BGGwrapper"></div><div class="BGGitem"></div><div class="BGGprovided"><div class="BGGtitle"></div></div></div>
 </article>
 
 {{ end }}
