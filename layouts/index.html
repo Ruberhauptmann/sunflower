@@ -31,8 +31,8 @@
         {{ range $paginator.Pages }}
             {{ if .Params.image }}
             <div class="card md:card-side md:col-span-2 bg-secondary shadow-xl">
-                <figure class="h-full py-2 md:pl-2"><img class="h-full max-h-96 rounded-xl" src="{{ .Permalink }}/{{ .Params.image }}" alt="Preview" /></figure>
-                <div class="card-body md:w-1/4 text-secondary-content">
+                <figure class="h-full md:w-7/12 py-2 md:pl-2"><img class="h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
+                <div class="card-body md:w-5/12 text-secondary-content">
                     <div>
                         {{ partial "postmeta.html" . }}
                     </div>
