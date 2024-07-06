@@ -5,6 +5,7 @@ link = "https://gitlab.com/Ruberhauptmann/ruberTeX"
 author = "Tjark Sievers"
 categories = ["Project Showcases"]
 tags = ["Hugo"]
+image = "screenshot.png"
 +++
 
 A Hugo theme forked from [HugoTeX](https://github.com/kaisugi/HugoTeX), strongly tailored to my requirements.
