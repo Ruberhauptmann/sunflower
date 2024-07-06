@@ -13,24 +13,29 @@
 
 
     <div class="grid grid-cols-1 md:grid-cols-2 md:grid-flow-row-dense gap-2 my-2 justify-center">
-        {{ range .Paginator.Pages }}
-        {{ if .Params.image }}
-            <div class="card md:card-side col-span-2 bg-secondary shadow-xl">
-                <figure class="h-full md:w-7/12 py-2 md:pl-2"><img class="h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
-                <div class="card-body md:w-5/12 text-secondary-content">
-                    <div>
-                        {{ partial "postmeta.html" . }}
-                    </div>
-                    <p class="text-justify">{{ .Summary }}</p>
+        {{ range $index, $element := .Paginator.Pages }}
+        {{ if $element.Params.image }}
+        <div class="card md:card-side md:col-span-2 bg-secondary shadow-xl">
+            {{ if math.ModBool $index 2 }}
+            <figure class="h-full min-w-max py-2 md:pl-2"><img class="border-primary border-2 object-contain h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
+            {{ end }}
+            <div class="card-body min-w-72 text-secondary-content">
+                <div>
+                    {{ partial "postmeta.html" $element }}
                 </div>
+                <p class="text-justify">{{ $element.Summary }}</p>
             </div>
+            {{ if not (math.ModBool $index 2) }}
+            <figure class="h-full min-w-max py-2 md:pr-2"><img class="border-primary border-2 object-contain h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
+            {{ end }}
+        </div>
         {{ else }}
         <div class="card bg-secondary w-full shadow-xl">
             <div class="card-body w-full h-full text-secondary-content">
                 <div>
-                    {{ partial "postmeta.html" . }}
+                    {{ partial "postmeta.html" $element }}
                 </div>
-                <p class="line-clamp-3 text-justify">{{ .Summary }}</p>
+                <p class="line-clamp-3 text-justify">{{ $element.Summary }}</p>
             </div>
         </div>
         {{ end }}

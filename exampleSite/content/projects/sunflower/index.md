@@ -5,6 +5,7 @@ link = "https://gitlab.com/Ruberhauptmann/sunflower"
 author = "Tjark Sievers"
 categories = ["Project Showcases"]
 tags = ["Hugo"]
+image = "plot.png"
 +++
 
 A Hugo theme
