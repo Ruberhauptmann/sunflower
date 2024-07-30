@@ -9,9 +9,6 @@
 
     <div class="divider divider-primary"></div>
 
-
-
-
     <div class="grid grid-cols-1 md:grid-cols-2 md:grid-flow-row-dense gap-2 my-2 justify-center">
         {{ range $index, $element := .Paginator.Pages }}
         {{ if $element.Params.image }}
@@ -19,14 +16,14 @@
             {{ if math.ModBool $index 2 }}
             <figure class="max-w-2xl py-2 md:pl-2"><img class="border-primary border-2 object-cover h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
             {{ end }}
-            <div class="card-body min-w-72 text-secondary-content">
+            <div class="card-body w-full h-full min-w-72 max-w-lg text-secondary-content">
                 <div>
                     {{ partial "postmeta.html" $element }}
                 </div>
                 <p class="text-justify">{{ $element.Summary }}</p>
             </div>
             {{ if not (math.ModBool $index 2) }}
-            <figure class="max-w-2xl w-full py-2 md:pr-2"><img class="border-primary border-2 object-cover h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
+            <figure class="max-w-2xl py-2 md:pr-2"><img class="border-primary border-2 object-cover h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
             {{ end }}
         </div>
         {{ else }}
