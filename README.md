@@ -4,6 +4,8 @@
 
 A clean Hugo theme with yellows and greens using TailwindCSS and DaisyUI components.
 
+Data: export from zotero with betterbibtex as betterbibtexjson!
+
 ## Features
 
 - a page that renders structured data in yaml files into a resume

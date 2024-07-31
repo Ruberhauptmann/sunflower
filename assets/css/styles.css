@@ -6,10 +6,10 @@
 
 @layer base {
     .BGGitem > a:first-child {
-        @apply h-32 flex-none p-2 self-center flow-root;
+        @apply h-32 aspect-square flex-none self-center overflow-hidden block border-primary border-2 rounded-xl;
     }
     .BGGitem a img {
-        @apply max-w-full max-h-full;
+        @apply object-cover w-full h-full object-center;
     }
     .BGGprovided a {
         @apply link;
@@ -25,7 +25,7 @@
 @layer components {
     .BGGitem {
         /*@apply h-36 shadow-sm bg-secondary text-secondary-content rounded-2xl flex;*/
-        @apply card card-side bg-secondary shadow-xl;
+        @apply card card-side bg-secondary shadow-xl p-2;
     }
     .BGGprovided {
         @apply text-sm font-light;

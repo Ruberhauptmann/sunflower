@@ -25,7 +25,66 @@
 </div>
 
 <article class="max-w-screen-lg mx-auto my-5 px-6">
-    <h2 class="text-3xl">Recent posts</h2>
+    <h2 class="text-3xl font-bold">Recent publications</h2>
+
+    <ol>
+    {{ if .Site.Data.preprints.items }}
+        {{ range $index, $element := sort .Site.Data.preprints.items "date" "desc" }}
+        <li class="p-1">
+            <ul>
+                <li>
+                    [{{ math.Add $index 1 }}]
+                    {{ $len := len $element.creators }}
+                    {{ range $author_key, $author := $element.creators  }}
+                    {{ if eq  $.Site.Params.publicationLastName .lastName }}
+                    <span class="font-bold">{{ .firstName }} {{ .lastName }}</span>{{ if ne (add $author_key 1) $len }}, {{ end }}
+                    {{ else }}
+                    {{ .firstName }} {{ .lastName }}{{ if ne (add $author_key 1) $len }}, {{ end }}
+                    {{ end }}
+                    {{ end }}
+                </li>
+                <li>{{ $element.title }}</li>
+                <li>
+                    <a  class="link" href="https://doi.org/{{ $element.DOI }}" target="_blank">
+                        {{ $element.archiveID }}
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {{ end }}
+    {{ end }}
+
+
+    {{ if .Site.Data.publications.items }}
+        {{ range $index, $element := sort .Site.Data.publications.items "date" "desc" }}
+        <li class="p-1">
+            <ul>
+                <li>
+                    [{{ math.Add (math.Add $index 1) (len $.Site.Data.preprints.items)  }}]
+                    {{ $len := len $element.creators }}
+                    {{ range $author_key, $author := $element.creators  }}
+                    {{ if eq  $.Site.Params.publicationLastName .lastName }}
+                    <span class="font-bold">{{ .firstName }} {{ .lastName }}</span>{{ if ne (add $author_key 1) $len }}, {{ end }}
+                    {{ else }}
+                    {{ .firstName }} {{ .lastName }}{{ if ne (add $author_key 1) $len }}, {{ end }}
+                    {{ end }}
+                    {{ end }}
+                </li>
+                <li>{{ $element.title }}</li>
+                <li>
+                    <a  class="link" href="https://doi.org/{{ $element.DOI }}" target="_blank">
+                        {{ $element.journalAbbreviation }} <span class="font-semibold">{{ $element.volume }}</span>, {{ $element.pages }}
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {{ end }}
+    {{ end }}
+    </ol>
+</article>
+
+<article class="max-w-screen-lg mx-auto my-5 px-6">
+    <h2 class="text-3xl font-bold">Recent posts</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 grid-flow-row md:grid-flow-row-dense gap-2 my-2">
         {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) 4 }}
         {{ range $index, $element := $paginator.Pages }}

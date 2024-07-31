@@ -2,8 +2,9 @@ theme = "sunflower"
 languageCode = "en-us"
 baseURL = "https://example.com"
 title = "Sunflower Example Site"
+ignoreFiles = ['\.bib$']
 
-copyright = "Copyright © 2024, Joe Bob, all rights reserved."
+copyright = "Copyright © 2024, Leon N. Cooper, all rights reserved."
 
 paginate = 2
 
@@ -12,9 +13,13 @@ paginate = 2
   hero = "hero.jpg"
   profile = "profile.png"
   mainSections = ["projects", "blog"]
-  abstract = "This is a site showing the capacities of the sunflower theme for hugo."
+  abstract = """
+    This is a site showing the capacities of the sunflower theme for hugo.
+    Using the example of the Nobel laureate Leon N. Cooper, it shows the features it specifically has for the needs of academics.
+  """
   bgg_username = "ourkindofart"
   bgg_title = "Last boardgames played"
+  publicationLastName = "Cooper"
 
 [params.social.orcid]
   link = "#orcid"
@@ -52,17 +57,21 @@ date = ['date_finished', ':default']
 
 [menu]
 [[menu.main]]
+  name = "Publications"
+  url = "/publications"
+  weight = -130
+[[menu.main]]
   name = "CV"
   url = "/cv"
   weight = -120
 [[menu.main]]
   name = "Projects"
   url = "/categories/project-showcases"
-  weight = -120
+  weight = -110
 [[menu.main]]
   name = "Lecture Notes"
   url = "/lecture-notes"
-  weight = -110
+  weight = -100
 [[menu.main]]
   name = "About"
   url = "/about"

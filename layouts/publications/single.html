@@ -1,0 +1,71 @@
+{{ define "main" }}
+
+<article class="max-w-prose justify-self-center mx-auto mb-16 px-6 sm:px-4 md:px-0 space-y-2 mt-8">
+    <h1 class="text-4xl font-bold">{{ .Title }}</h1>
+
+    <article class="prose">
+        {{ .Content }}
+    </article>
+
+    <div class="divider divider-primary"></div>
+
+    {{ if .Site.Data.preprints.items }}
+    <h2 class="text-2xl font-bold">Preprints</h2>
+
+    <ol>
+        {{ range $index, $element := sort .Site.Data.preprints.items "date" "desc" }}
+        <li class="p-1">
+            <ul>
+                <li>
+                    [{{ math.Add $index 1 }}]
+                    {{ $len := len $element.creators }}
+                    {{ range $author_key, $author := $element.creators  }}
+                    {{ if eq  $.Site.Params.publicationLastName .lastName }}
+                    <span class="font-bold">{{ .firstName }} {{ .lastName }}</span>{{ if ne (add $author_key 1) $len }}, {{ end }}
+                    {{ else }}
+                    {{ .firstName }} {{ .lastName }}{{ if ne (add $author_key 1) $len }}, {{ end }}
+                    {{ end }}
+                    {{ end }}
+                </li>
+                <li>{{ $element.title }}</li>
+                <li>
+                    <a  class="link" href="https://doi.org/{{ $element.DOI }}" target="_blank">
+                        {{ $element.archiveID }}
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {{ end }}
+    </ol>
+    {{ end }}
+
+    {{ if .Site.Data.publications.items }}
+    <h2 class="text-2xl font-bold">Publications</h2>
+    <ol>
+        {{ range $index, $element := sort .Site.Data.publications.items "date" "desc" }}
+        <li class="p-1">
+            <ul>
+                <li>
+                    [{{ math.Add $index 1 }}]
+                    {{ $len := len $element.creators }}
+                    {{ range $author_key, $author := $element.creators  }}
+                    {{ if eq  $.Site.Params.publicationLastName .lastName }}
+                    <span class="font-bold">{{ .firstName }} {{ .lastName }}</span>{{ if ne (add $author_key 1) $len }}, {{ end }}
+                    {{ else }}
+                    {{ .firstName }} {{ .lastName }}{{ if ne (add $author_key 1) $len }}, {{ end }}
+                    {{ end }}
+                    {{ end }}
+                </li>
+                <li>{{ $element.title }}</li>
+                <li>
+                    <a  class="link" href="https://doi.org/{{ $element.DOI }}" target="_blank">
+                        {{ $element.journalAbbreviation }} <span class="font-semibold">{{ $element.volume }}</span>, {{ $element.pages }}
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {{ end }}
+    </ol>
+    {{ end }}
+</article>
+{{ end }}

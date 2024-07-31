@@ -1,9 +1,18 @@
 {{ define "main" }}
 
 <article class="max-w-prose justify-self-center mx-auto mb-16 px-6 sm:px-4 md:px-0 space-y-2 mt-8">
-    <h1 class="text-4xl font-bold">{{ .Title }}</h1>
+    <h1 class="text-4xl font-bold">
+        {{ .Title }}
+        <span class="ml-2"><a href="{{ .Site.Params.cv.download }}" target="_blank" class="tooltip tooltip-right" data-tip="CV download"><i class="fa fa-file-pdf-o fa" aria-hidden="true"></i></a></span>
+    </h1>
 
-    {{ .Content }}
+    <article class="prose">
+        {{ .Site.Params.abstract }}
+
+        {{ .Content }}
+    </article>
+
+    <div class="divider divider-primary"></div>
 
 
     {{ if .Site.Params.cv.general }}
