@@ -14,7 +14,6 @@
 
     <div class="divider divider-primary"></div>
 
-
     {{ if .Site.Params.cv.general }}
         {{- partial "cv/general.html" . -}}
     {{ end }}
@@ -37,6 +36,11 @@
     {{ if .Site.Params.cv.technical_skills }}
     <div class="divider divider-secondary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Technical Skills</h2></div>
         {{- partial "cv/technical_skills.html" . -}}
+    {{ end }}
+
+    {{ if .Site.Params.cv.publications }}
+    <div class="divider divider-primary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Publications</h2></div>
+    {{- partial "cv/publications.html" . -}}
     {{ end }}
 </article>
 {{ end }}

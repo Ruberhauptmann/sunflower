@@ -37,6 +37,7 @@ paginate = 2
   url = "/cv/"
   download = "#cvdownload"
   general = true
+  publications = true
   education = true
   schools_conferences = true
   work_experience = true

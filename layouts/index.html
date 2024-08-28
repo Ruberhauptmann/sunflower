@@ -24,8 +24,11 @@
     </div>
 </div>
 
+{{ if or .Site.Data.preprints.items .Site.Data.publications.items }}
 <article class="max-w-screen-lg mx-auto my-5 px-6">
     <h2 class="text-3xl font-bold">Recent publications</h2>
+
+    {{ $numberOfArticles := math.Add (len .Site.Data.preprints.items) (len .Site.Data.publications.items) }}
 
     <ol>
         {{ if .Site.Data.preprints.items }}
@@ -33,7 +36,7 @@
         <li class="p-1">
             <ul>
                 <li>
-                    [{{ math.Add $index 1 }}]
+                    [{{ math.Sub $numberOfArticles $index }}]
                     {{ $len := len $element.creators }}
                     {{ range $author_key, $author := $element.creators  }}
                     {{ if eq  $.Site.Params.publicationLastName .lastName }}
@@ -60,7 +63,7 @@
         <li class="p-1">
             <ul>
                 <li>
-                    [{{ math.Add (math.Add $index 1) (len $.Site.Data.preprints.items)  }}]
+                    [{{ math.Sub $numberOfArticles $index (len $.Site.Data.preprints.items) }}]
                     {{ $len := len $element.creators }}
                     {{ range $author_key, $author := $element.creators  }}
                     {{ if eq  $.Site.Params.publicationLastName .lastName }}
@@ -82,6 +85,7 @@
         {{ end }}
     </ol>
 </article>
+{{ end }}
 
 <article class="max-w-screen-lg mx-auto my-5 px-6">
     <h2 class="text-3xl font-bold">Recent posts</h2>

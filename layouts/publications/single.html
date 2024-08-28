@@ -9,6 +9,9 @@
 
     <div class="divider divider-primary"></div>
 
+    {{ if or .Site.Data.preprints.items .Site.Data.publications.items }}
+        {{ $numberOfArticles := math.Add (len .Site.Data.preprints.items) (len .Site.Data.publications.items) }}
+
     {{ if .Site.Data.preprints.items }}
     <h2 class="text-2xl font-bold">Preprints</h2>
 
@@ -17,7 +20,7 @@
         <li class="p-1">
             <ul>
                 <li>
-                    [{{ math.Add $index 1 }}]
+                    [{{ math.Sub $numberOfArticles $index }}]
                     {{ $len := len $element.creators }}
                     {{ range $author_key, $author := $element.creators  }}
                     {{ if eq  $.Site.Params.publicationLastName .lastName }}
@@ -40,13 +43,13 @@
     {{ end }}
 
     {{ if .Site.Data.publications.items }}
-    <h2 class="text-2xl font-bold">Publications</h2>
+    <h2 class="text-2xl font-bold">Published</h2>
     <ol>
         {{ range $index, $element := sort .Site.Data.publications.items "date" "desc" }}
         <li class="p-1">
             <ul>
                 <li>
-                    [{{ math.Add $index 1 }}]
+                    [{{ math.Sub $numberOfArticles $index (len $.Site.Data.preprints.items) }}]
                     {{ $len := len $element.creators }}
                     {{ range $author_key, $author := $element.creators  }}
                     {{ if eq  $.Site.Params.publicationLastName .lastName }}
@@ -66,6 +69,7 @@
         </li>
         {{ end }}
     </ol>
+    {{ end }}
     {{ end }}
 </article>
 {{ end }}
