@@ -1,34 +1,28 @@
 {{ define "main" }}
 
-<article class="max-w-screen-lg mx-auto my-5 px-6">
+<article class="max-w-screen-lg mx-auto my-5 px-4 sm:px-6">
     <article class="max-w-prose mx-auto prose pb-2">
         <h1>{{ .Title }}</h1>
-
         {{ .Content }}
     </article>
 
     <div class="divider divider-primary"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 md:grid-flow-row-dense gap-2 my-2 justify-center">
+    <div class="grid grid-cols-1 gap-4 my-2">
         {{ range $index, $element := .Paginator.Pages }}
         {{ if $element.Params.image }}
-        <div class="card md:card-side md:col-span-2 bg-secondary shadow-xl">
-            {{ if math.ModBool $index 2 }}
-            <figure class="max-w-2xl py-2 md:pl-2"><img class="border-primary border-2 object-cover h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
-            {{ end }}
-            <div class="card-body w-full h-full min-w-72 max-w-lg text-secondary-content">
+        <div class="card md:card-side bg-secondary shadow-xl flex flex-col md:flex-row {{ if math.ModBool $index 2 }}md:flex-row-reverse{{ end }}">
+            <figure class="w-full md:w-1/2 p-0 md:p-2"><img class="border-primary border-2 object-cover w-full h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
+            <div class="card-body w-full md:w-1/2 text-secondary-content flex flex-col justify-between p-4">
                 <div>
                     {{ partial "postmeta.html" $element }}
                 </div>
-                <p class="text-justify">{{ $element.Summary }}</p>
+                <p class="line-clamp-3 text-justify mt-2">{{ $element.Summary }}</p>
             </div>
-            {{ if not (math.ModBool $index 2) }}
-            <figure class="max-w-2xl py-2 md:pr-2"><img class="border-primary border-2 object-cover h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
-            {{ end }}
         </div>
         {{ else }}
-        <div class="card bg-secondary w-full shadow-xl">
-            <div class="card-body w-full h-full text-secondary-content">
+        <div class="card bg-secondary shadow-xl">
+            <div class="card-body w-full text-secondary-content">
                 <div>
                     {{ partial "postmeta.html" $element }}
                 </div>
@@ -40,18 +34,14 @@
     </div>
 
     {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-    <div class="grid grid-cols-1 mx-auto place-items-center">
-        <div class="join grid grid-cols-2 w-40">
-            <div>
-                {{ if .Paginator.HasPrev }}
-                <a role="button" class="join-item btn btn-outline btn-primary justify-self-end" href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">Newer</a>
-                {{ end }}
-            </div>
-            <div>
-                {{ if .Paginator.HasNext }}
-                <a role="button" class="join-item btn btn-outline btn-primary justify-self-end" href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">Older</a>
-                {{ end }}
-            </div>
+    <div class="flex justify-center mt-4">
+        <div class="join grid grid-cols-2 gap-2 w-40">
+            {{ if .Paginator.HasPrev }}
+            <a role="button" class="join-item btn btn-outline btn-primary" href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">Newer</a>
+            {{ end }}
+            {{ if .Paginator.HasNext }}
+            <a role="button" class="join-item btn btn-outline btn-primary" href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">Older</a>
+            {{ end }}
         </div>
     </div>
     {{ end }}

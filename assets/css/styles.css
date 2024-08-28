@@ -17,23 +17,19 @@
     .BGGtitle a:first-child {
         @apply text-xl link link-hover inline line-clamp-2;
     }
-    .BGGtitle a:last-child {
-        @apply link link-hover text-sm;
-    }
 }
 
 @layer components {
     .BGGitem {
-        /*@apply h-36 shadow-sm bg-secondary text-secondary-content rounded-2xl flex;*/
-        @apply card card-side bg-secondary shadow-xl p-2;
+        @apply card p-2;
     }
     .BGGprovided {
-        @apply text-sm font-light;
+        @apply w-full text-sm font-light;
     }
     .BGGtitle {
-        @apply card-body md:w-1/4 text-secondary-content flow-root flex-1 pt-4 px-1.5;
+        @apply hidden;
     }
     .BGGwrapper {
-        @apply grid grid-cols-1 md:grid-cols-2 gap-2 my-2;
+        @apply flex flex-wrap justify-center gap-2 my-2;
     }
 }

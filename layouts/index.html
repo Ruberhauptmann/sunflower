@@ -9,7 +9,7 @@
                 <img class="mask mask-circle h-80" src="{{ .Site.Params.profile }}"/>
             </span>
             {{ end }}
-            <div class="max-w-md ">
+            <div class="max-w-md">
                 <h1 class="text-5xl font-bold">{{ .Site.Title }}</h1>
                 <p class="py-3">{{ .Site.Params.Abstract }}</p>
                 <ul class="menu menu-horizontal bg-transparent rounded-box">
@@ -28,7 +28,7 @@
     <h2 class="text-3xl font-bold">Recent publications</h2>
 
     <ol>
-    {{ if .Site.Data.preprints.items }}
+        {{ if .Site.Data.preprints.items }}
         {{ range $index, $element := sort .Site.Data.preprints.items "date" "desc" }}
         <li class="p-1">
             <ul>
@@ -52,10 +52,10 @@
             </ul>
         </li>
         {{ end }}
-    {{ end }}
+        {{ end }}
 
 
-    {{ if .Site.Data.publications.items }}
+        {{ if .Site.Data.publications.items }}
         {{ range $index, $element := sort .Site.Data.publications.items "date" "desc" }}
         <li class="p-1">
             <ul>
@@ -79,48 +79,45 @@
             </ul>
         </li>
         {{ end }}
-    {{ end }}
+        {{ end }}
     </ol>
 </article>
 
 <article class="max-w-screen-lg mx-auto my-5 px-6">
     <h2 class="text-3xl font-bold">Recent posts</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 grid-flow-row md:grid-flow-row-dense gap-2 my-2">
+    <div class="grid grid-cols-1 gap-4 my-2">
         {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) 4 }}
         {{ range $index, $element := $paginator.Pages }}
-            {{ if $element.Params.image }}
-            <div class="card md:card-side md:col-span-2 bg-secondary shadow-xl">
-                {{ if math.ModBool $index 2 }}
-                <figure class="max-w-2xl py-2 md:pl-2"><img class="border-primary border-2 object-cover h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
-                {{ end }}
-                <div class="card-body w-full h-full min-w-72 max-w-lg text-secondary-content">
-                    <div>
-                        {{ partial "postmeta.html" $element }}
-                    </div>
-                    <p class="text-justify">{{ $element.Summary }}</p>
+        {{ if $element.Params.image }}
+        <div class="card md:card-side bg-secondary shadow-xl flex flex-col md:flex-row {{ if math.ModBool $index 2 }}md:flex-row-reverse{{ end }}">
+            <figure class="w-full md:w-1/2 p-0 md:p-2">
+                <img class="border-primary border-2 object-cover w-full h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" />
+            </figure>
+            <div class="card-body w-full md:w-1/2 text-secondary-content flex flex-col justify-between p-4">
+                <div>
+                    {{ partial "postmeta.html" $element }}
                 </div>
-                {{ if not (math.ModBool $index 2) }}
-                <figure class="max-w-2xl py-2 md:pr-2"><img class="border-primary border-2 object-cover h-full max-h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
-                {{ end }}
+                <p class="line-clamp-3 text-justify mt-2">{{ $element.Summary }}</p>
             </div>
-            {{ else }}
-            <div class="card bg-secondary w-full shadow-xl">
-                <div class="card-body text-secondary-content">
-                    <div>
-                        {{ partial "postmeta.html" $element }}
-                    </div>
-                    <p class="line-clamp-3 text-justify">{{ $element.Summary }}</p>
+        </div>
+        {{ else }}
+        <div class="card bg-secondary shadow-xl">
+            <div class="card-body text-secondary-content">
+                <div>
+                    {{ partial "postmeta.html" $element }}
                 </div>
+                <p class="line-clamp-3 text-justify">{{ $element.Summary }}</p>
             </div>
-            {{ end }}
-            {{ end }}
+        </div>
+        {{ end }}
+        {{ end }}
     </div>
 </article>
 
 <article class="max-w-screen-lg mx-auto my-5 px-6">
     <h2 class="text-3xl">{{ .Site.Params.bgg_title }}</h2>
 
-    <script language="javascript" src="https://boardgamegeek.com/jswidget.php?username={{ .Site.Params.bgg_username}}&numitems=4&text=title&images=medium&show=recentplays&imagesonly=1&imagepos=left&showplaydate=1&domains%5B%5D=boardgame"></script>
+    <script language="javascript" src="https://boardgamegeek.com/jswidget.php?username={{ .Site.Params.bgg_username}}&numitems=6&text=title&images=medium&show=recentplays&imagesonly=1&imagepos=left&showplaydate=0&domains%5B%5D=boardgame"></script>
     <!-- Hidden classes for Tailwind compilation -->
     <div class="hidden"><div class="BGGwrapper"></div><div class="BGGitem"></div><div class="BGGprovided"><div class="BGGtitle"></div></div></div>
 </article>
