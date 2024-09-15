@@ -2,7 +2,7 @@ theme = "sunflower"
 languageCode = "en-us"
 baseURL = "https://example.com"
 title = "Sunflower Example Site"
-ignoreFiles = ['\.bib$']
+ignoreFiles = []
 
 copyright = "Copyright © 2024, Leon N. Cooper, all rights reserved."
 
@@ -15,7 +15,7 @@ paginate = 2
   mainSections = ["projects", "blog"]
   abstract = """
     This is a site showing the capacities of the sunflower theme for hugo.
-    Using the example of the Nobel laureate Leon N. Cooper, it shows the features it specifically has for the needs of academics.
+    Using the example of Nobel laureate Leon N. Cooper, it shows the features it specifically has for the needs of academics.
   """
   bgg_username = "ourkindofart"
   bgg_title = "Last boardgames played"

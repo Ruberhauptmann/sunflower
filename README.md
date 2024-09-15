@@ -1,115 +1,78 @@
-# Sunflower theme
+# Sunflower Theme
 
-![Screenshot of the home page](https://gitlab.com/Ruberhauptmann/sunflower/-/raw/main/images/screenshot.png)
+![Screenshot of the home page](https://raw.githubusercontent.com/Ruberhauptmann/sunflower/main/images/screenshot.png)
 
-A clean Hugo theme with yellows and greens using TailwindCSS and DaisyUI components.
+**Sunflower** is a clean and vibrant Hugo theme that combines the flexibility of **TailwindCSS** and **DaisyUI** to deliver a visually appealing site. It’s optimized for showcasing resumes, projects, and lecture notes, with a striking full-screen landing page.
 
-Data: export from zotero with betterbibtex as betterbibtexjson!
+## Key Features
 
-## Features
+- **Resume Page**: Easily renders structured data from YAML files into a professional CV.
+- **Project & Lecture Note Pages**: Dedicated sections to showcase projects and lecture materials.
+- **Full-Screen Hero**: A customizable landing page with social media icons.
 
-- a page that renders structured data in yaml files into a resume
-- special pages for showcasing projects and lecture notes
-- a full screen image as landing page, with social icons
+## Getting Started
 
-## Archetypes
+To start using the Sunflower theme, clone the repository and set it up as your theme in your Hugo site:
 
-This page provides archetypes to automatically populate the metadata when creating lecture notes and projects:
-```shell
-hugo new content lecture-notes/post1/index.md
-hugo new content projects/post1/index.md
+```bash
+git clone https://github.com/Ruberhauptmann/sunflower themes/sunflower
 ```
 
-## Configuration
-
-For setting up the url for the CV and the sections that should appear:
-```toml
-[params.cv]
-url = "/cv/"
-download = "#download"
-general = true
-education = true
-work_experience = true
-publications = true
-```
-
-The social links in the hero take the following form:
-```toml
-[params.social.orcid]
-link = "#orcid"
-```
-For now, only a set of links are implemented:
-- Email
-- Orcid
-- Gitlab
-- LinkedIn
-
-Menu items can be created like this:
-```toml
-[menu]
-[[menu.main]]
-name = "CV"
-url = "/cv"
-weight = -120
-```
-
+Set the `theme` parameter in your `config.toml` to `"sunflower"`:
 
 ```toml
-[params]
-favicon = "sunflower.png"
-hero = "hero.jpg"
-mainSections = ["projects", "blog"]
-abstract = "This is a site showing the capacities of the sunflower theme for hugo."
+theme = "sunflower"
 ```
 
-Example configuration:
+### Node.js and TailwindCSS
+
+**Sunflower** relies on **TailwindCSS** for its styling, which requires **Node.js** to process Tailwind’s utility classes.
+
+Ensure that you have **Node.js** installed. You can download it from [nodejs.org](https://nodejs.org).
+
+After cloning the theme, navigate to the theme folder and install the necessary dependencies:
+
+```bash
+cd themes/sunflower
+npm install
+```
+
+Once the dependencies are installed, you can start Tailwind's watcher to process your CSS:
+
+```bash
+npm run dev
+```
+
+This will watch for changes in your CSS files and recompile them as needed.
+
+### Production Build
+
+To generate the final production CSS, run:
+
+```bash
+npm run build
+```
+
+This will optimize and minify the CSS for deployment.
+
+## Configuration Overview
+
+### Basic Configuration
+
+Example `config.toml` setup for a site using the Sunflower theme:
+
 ```toml
 theme = "sunflower"
 languageCode = "en-us"
 baseURL = "https://example.com"
 title = "Sunflower Example Site"
-
-copyright = "Copyright © 2024, Joe Bob, all rights reserved."
-
 paginate = 9
 
 [params]
 favicon = "sunflower.png"
 hero = "hero.jpg"
 mainSections = ["projects", "blog"]
-abstract = "This is a site showing the capacities of the sunflower theme for hugo."
-
-[params.social.orcid]
-link = "#orcid"
-
-[params.social.email]
-link = "#email"
-
-[params.social.gitlab]
-link = "#gitlab"
-
-[params.social.linkedin]
-link = "#linkedin"
-
-[params.cv]
-url = "/cv/"
-download = "#cvdownload"
-general = true
-education = true
-work_experience = true
-
-[taxonomies]
-category = "categories"
-tag = "tags"
-series = "series"
-
-[frontmatter]
-date = ['date_finished', ':default']
-
-# syntax highlight settings
-[markup]
-[markup.highlight]
-style = "dracula"
+abstract = "A site demonstrating the Sunflower theme's capabilities."
 
 [menu]
 [[menu.main]]
@@ -133,3 +96,76 @@ name = "About"
 url = "/about"
 weight = 0
 ```
+
+### CV Configuration
+
+Customize the CV page by enabling the necessary sections and defining the URL for the downloadable CV file:
+
+```toml
+[params.cv]
+url = "/cv/"
+download = "#cvdownload"
+general = true
+education = true
+work_experience = true
+publications = true
+```
+
+### Social Links
+
+Add your social media or contact links to the full-screen landing page using this configuration:
+
+```toml
+[params.social.orcid]
+link = "#orcid"
+
+[params.social.email]
+link = "#email"
+
+[params.social.gitlab]
+link = "#gitlab"
+
+[params.social.linkedin]
+link = "#linkedin"
+```
+
+Currently supported social platforms:
+- Email
+- ORCID
+- GitLab
+- LinkedIn
+
+### Taxonomies
+
+Define taxonomies to categorize your content:
+
+```toml
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+```
+
+### Date Handling
+
+Set the date fields used in frontmatter:
+
+```toml
+[frontmatter]
+date = ['date_finished', ':default']
+```
+
+## Archetypes
+
+Easily create new content for projects and lecture notes with the following commands:
+
+```bash
+hugo new content/lecture-notes/post1/index.md
+hugo new content/projects/post1/index.md
+```
+
+These archetypes automatically populate metadata for your content.
+
+## Deployment
+
+Sunflower can be deployed on platforms like Netlify or GitHub Pages. Ensure you have the correct `baseURL` in your `config.toml` file and deploy using the Hugo build commands.
