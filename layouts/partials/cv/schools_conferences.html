@@ -4,7 +4,7 @@
         <li class="my-2">
             <ul>
                 <li><span class="font-light">{{ time.Format "01/2006" .enddate }}</span></li>
-                <li>{{ .location }}: <a class="link" href="https://{{ .url }}" target="_blank">{{ .name }}</a></li>
+                <li><a class="link" href="https://{{ .url }}" target="_blank">{{ .name }}</a> ({{ .location }})</li>
                 {{ if .poster_title }}
                 <li>Poster:
                     {{ if .poster }}<a class="link" href="https://{{ .poster }}" target="_blank">{{ .poster_title }}</a>
