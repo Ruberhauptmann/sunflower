@@ -6,32 +6,31 @@ ignoreFiles = []
 
 copyright = "Copyright © 2024, Leon N. Cooper, all rights reserved."
 
-paginate = 2
+[pagination]
+  pagerSize = 6
 
 [params]
   favicon = "sunflower.png"
   hero = "hero.jpg"
   profile = "profile.png"
   mainSections = ["projects", "blog"]
+  homepageSections = ["posts", "publications"]
   abstract = """
     This is a site showing the capacities of the sunflower theme for hugo.
     Using the example of Nobel laureate Leon N. Cooper, it shows the features it specifically has for the needs of academics.
   """
-  bgg_username = "ourkindofart"
-  bgg_title = "Last boardgames played"
   publicationLastName = "Cooper"
 
 [params.social.orcid]
   link = "#orcid"
-
 [params.social.email]
   link = "#email"
-
 [params.social.github]
   link = "#github"
-
 [params.social.linkedin]
   link = "#linkedin"
+[params.social.gpg]
+  link = "/gpg.txt"
 
 [params.cv]
   url = "/cv/"

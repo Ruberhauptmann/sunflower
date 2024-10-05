@@ -13,33 +13,32 @@
                 <h1 class="text-5xl font-bold">{{ .Site.Title }}</h1>
                 <p class="py-3">{{ .Site.Params.Abstract }}</p>
                 <ul class="menu menu-horizontal bg-transparent rounded-box">
-                    <li><a href="mailto:{{ .Site.Params.social.email.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Email"><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a></li>
-                    <li><a href="{{ .Site.Params.social.orcid.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Orcid"><i class="fa fa-orcid fa-2x" aria-hidden="true"></i></a></li>
-                    <li><a href="{{ .Site.Params.social.github.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
-                    <li><a href="{{ .Site.Params.social.linkedin.link }}" target="_blank" class="tooltip tooltip-right" data-tip="LinkedIn"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
-                    <li><a href="{{ .Site.Params.cv.download }}" target="_blank" class="tooltip tooltip-right" data-tip="CV"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="mailto:{{ .Site.Params.social.email.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Email"><i class="fa-solid fa-envelope fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ .Site.Params.social.orcid.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Orcid"><i class="fa-brands fa-orcid fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ .Site.Params.social.github.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Github"><i class="fa-brands fa-github fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ .Site.Params.social.linkedin.link }}" target="_blank" class="tooltip tooltip-right" data-tip="LinkedIn"><i class="fa-brands fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ .Site.Params.cv.download }}" target="_blank" class="tooltip tooltip-right" data-tip="CV"><i class="fa-solid fa-file-pdf fa-2x" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ .Site.Params.social.gpg.link }}" target="_blank" class="tooltip tooltip-right" data-tip="GPG key"><i class="fa-solid fa-key fa-2x" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
+{{ if in .Site.Params.homepageSections "publications" }}
 {{ if or .Site.Data.preprints.items .Site.Data.publications.items }}
 <article class="max-w-screen-lg mx-auto my-5 px-6">
     <h2 class="text-3xl font-bold">Recent publications</h2>
 
-    {{ $numberOfArticles := math.Add (len .Site.Data.preprints.items) (len .Site.Data.publications.items) }}
-
     <ol>
         {{ if .Site.Data.preprints.items }}
-        {{ range $index, $element := sort .Site.Data.preprints.items "date" "desc" }}
+        {{ range $index, $element := first 3 (sort .Site.Data.preprints.items "date" "desc") }}
         <li class="p-1">
             <ul>
                 <li>
-                    [{{ math.Sub $numberOfArticles $index }}]
                     {{ $len := len $element.creators }}
                     {{ range $author_key, $author := $element.creators  }}
-                    {{ if eq  $.Site.Params.publicationLastName .lastName }}
+                    {{ if eq $.Site.Params.publicationLastName .lastName }}
                     <span class="font-bold">{{ .firstName }} {{ .lastName }}</span>{{ if ne (add $author_key 1) $len }}, {{ end }}
                     {{ else }}
                     {{ .firstName }} {{ .lastName }}{{ if ne (add $author_key 1) $len }}, {{ end }}
@@ -59,11 +58,10 @@
 
 
         {{ if .Site.Data.publications.items }}
-        {{ range $index, $element := sort .Site.Data.publications.items "date" "desc" }}
+        {{ range $index, $element := first 3 (sort .Site.Data.publications.items "date" "desc") }}
         <li class="p-1">
             <ul>
                 <li>
-                    [{{ math.Sub $numberOfArticles $index (len $.Site.Data.preprints.items) }}]
                     {{ $len := len $element.creators }}
                     {{ range $author_key, $author := $element.creators  }}
                     {{ if eq  $.Site.Params.publicationLastName .lastName }}
@@ -86,14 +84,16 @@
     </ol>
 </article>
 {{ end }}
+{{ end }}
 
+{{ if in .Site.Params.homepageSections "posts" }}
 <article class="max-w-screen-lg mx-auto my-5 px-6">
     <h2 class="text-3xl font-bold">Recent posts</h2>
-    <div class="grid grid-cols-1 gap-4 my-2">
-        {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) 4 }}
+    <div class="grid grid-cols-2 grid-flow-row-dense gap-4 my-2">
+        {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) 6 }}
         {{ range $index, $element := $paginator.Pages }}
         {{ if $element.Params.image }}
-        <div class="card md:card-side bg-secondary shadow-xl flex flex-col md:flex-row {{ if math.ModBool $index 2 }}md:flex-row-reverse{{ end }}">
+        <div class="card md:card-side bg-secondary col-span-2 shadow-xl flex flex-col md:flex-row {{ if math.ModBool $index 2 }}md:flex-row-reverse{{ end }}">
             <figure class="w-full md:w-1/2 p-0 md:p-2">
                 <img class="border-primary border-2 object-cover w-full h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" />
             </figure>
@@ -117,7 +117,9 @@
         {{ end }}
     </div>
 </article>
+{{ end }}
 
+{{ if in .Site.Params.homepageSections "boardgames" }}
 <article class="max-w-screen-lg mx-auto my-5 px-6">
     <h2 class="text-3xl">{{ .Site.Params.bgg_title }}</h2>
 
@@ -125,5 +127,6 @@
     <!-- Hidden classes for Tailwind compilation -->
     <div class="hidden"><div class="BGGwrapper"></div><div class="BGGitem"></div><div class="BGGprovided"><div class="BGGtitle"></div></div></div>
 </article>
+{{ end }}
 
 {{ end }}

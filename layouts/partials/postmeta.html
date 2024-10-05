@@ -1,5 +1,7 @@
 {{ if .Params.link }}
 {{ .Scratch.Set "link" .Params.link}}
+{{ $u := urls.Parse .Params.link }}
+{{ .Scratch.Set "link-text" ((index (first 1 (split $u.Hostname ".")) 0) | humanize ) }}
 {{ else if .Params.download }}
 {{ .Scratch.Set "link-text" .Params.download }}
 {{ .Scratch.Set "link" (print .Permalink .Params.download) }}
@@ -51,7 +53,7 @@
   {{ if $link }}
   <p>
     <a href="{{ $link }}" target="_blank" class="link link-hover font-light">
-      <i class="fa fa-{{ $icon }}" aria-hidden="true"></i> {{ .Scratch.Get "link-text"}}
+      <i class="{{ $icon }}" aria-hidden="true"></i> {{ .Scratch.Get "link-text"}}
     </a>
   </p>
 {{ end }}
