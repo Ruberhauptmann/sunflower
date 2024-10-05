@@ -8,6 +8,8 @@
             {{ if or (.notes) (.grade) }}
             <li>
                 {{ if .notes }}{{ .notes }}.{{ end }}
+            </li>
+            <li>
                 {{ if .grade }}Final grade: {{ .grade }} (expected){{ end }}
             </li>
             {{ end }}
@@ -24,6 +26,8 @@
             {{ if or (.notes) (.grade) }}
             <li>
                 {{ if .notes }}{{ .notes }}.{{ end }}
+            </li>
+            <li>
                 {{ if .grade }}Final grade: {{ .grade }}{{ end }}
             </li>
             {{ end }}
