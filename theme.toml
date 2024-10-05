@@ -1,13 +1,12 @@
 name = "Sunflower"
 license = "MIT"
-licenselink = "https://gitlab.com/Ruberhauptmann/sunflower/-/blob/main/LICENSE"
+licenselink = "https://github.com/Ruberhauptmann/sunflower/raw/refs/heads/main/LICENSE"
 description = "A hugo theme using tailwindcss"
 
 
-homepage = "https://gitlab.com/Ruberhauptmann/sunflower"
+homepage = "https://github.com/Ruberhauptmann/sunflower"
 tags = ["Responsive"]
 features = []
-min_version = "0.88.0"
 
 [author]
   name = "Tjark Sievers"
