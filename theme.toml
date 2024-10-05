@@ -3,7 +3,6 @@ license = "MIT"
 licenselink = "https://github.com/Ruberhauptmann/sunflower/raw/refs/heads/main/LICENSE"
 description = "A hugo theme using tailwindcss"
 
-
 homepage = "https://github.com/Ruberhauptmann/sunflower"
 tags = ["Responsive"]
 features = []
