@@ -15,4 +15,4 @@ This project explores the role of Cooper pairs in condensed matter physics, spec
 
 The work sheds light on how these electron pairs are key to understanding quantum effects in low-temperature systems.
 
-![Cooper pairs, Tem5psu, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons](Cooper_pairs.jpg "Tem5psu, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons")
+![Cooper pairs, Tem5psu, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons](Cooper_pairs.webp "Tem5psu, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons")
