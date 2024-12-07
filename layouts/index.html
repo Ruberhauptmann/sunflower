@@ -6,7 +6,7 @@
         <div class="flex flex-wrap gap-4 justify-center">
             {{ if .Site.Params.profile }}
             <span class="h-80">
-                <img class="mask mask-circle h-80" alt="Profile image" width="40" height="40" src="{{ .Site.Params.profile }}"/>
+                <img class="mask mask-circle object-cover h-80 aspect-square" alt="Profile image" src="{{ .Site.Params.profile }}"/>
             </span>
             {{ end }}
             <div class="max-w-md">
