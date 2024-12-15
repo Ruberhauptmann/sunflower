@@ -8,11 +8,12 @@
 
     <div class="divider divider-primary"></div>
 
-    <div class="grid grid-cols-2 grid-flow-row-dense gap-4 my-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 grid-flow-row-dense gap-4 my-2">
         {{ range $index, $element := .Paginator.Pages }}
         {{ if $element.Params.image }}
-        <div class="card md:card-side bg-secondary col-span-2 shadow-xl flex flex-col md:flex-row {{ if math.ModBool $index 2 }}md:flex-row-reverse{{ end }}">
-            <figure class="w-full md:w-1/2 p-0 md:p-2"><img class="border-primary border-2 object-cover w-full h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" /></figure>
+        {{  $image := (.Resources.Get .Params.image).Resize "x384 q100 webp" }}
+        <div class="card md:card-side bg-secondary md:col-span-2 shadow-xl flex flex-col md:flex-row {{ if math.ModBool $index 2 }}md:flex-row-reverse{{ end }}">
+            <figure class="w-full p-0 md:p-2"><img class="border-primary border-2 object-cover w-full h-96 rounded-xl" loading="lazy" src="{{ $image.Permalink }}" alt="Preview" /></figure>
             <div class="card-body w-full md:w-1/2 text-secondary-content flex flex-col justify-between p-4">
                 <div>
                     {{ partial "postmeta.html" $element }}
