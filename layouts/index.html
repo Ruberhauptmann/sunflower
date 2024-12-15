@@ -13,12 +13,12 @@
                 <h1 class="text-5xl font-bold">{{ .Site.Title }}</h1>
                 <p class="py-3">{{ .Site.Params.Abstract }}</p>
                 <ul class="menu menu-horizontal bg-transparent rounded-box">
-                    <li><a href="mailto:{{ .Site.Params.social.email.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Email" aria-label="Send me an email"><i class="fa-solid fa-envelope fa-2x" aria-hidden="true"></i></a></li>
-                    <li><a href="{{ .Site.Params.social.orcid.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Orcid" aria-label="Go to my Orcid page"><i class="fa-brands fa-orcid fa-2x" aria-hidden="true"></i></a></li>
-                    <li><a href="{{ .Site.Params.social.github.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Github" aria-label="Go to my Github page"><i class="fa-brands fa-github fa-2x" aria-hidden="true"></i></a></li>
-                    <li><a href="{{ .Site.Params.social.linkedin.link }}" target="_blank" class="tooltip tooltip-right" data-tip="LinkedIn" aria-label="Go to my LinkedIn"><i class="fa-brands fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
-                    <li><a href="{{ .Site.Params.cv.download }}" target="_blank" class="tooltip tooltip-right" data-tip="CV" aria-label="Download my CV"><i class="fa-solid fa-file-pdf fa-2x" aria-hidden="true"></i></a></li>
-                    <li><a href="{{ .Site.Params.social.gpg.link }}" target="_blank" class="tooltip tooltip-right" data-tip="GPG key" aria-label="Download my GPG key"><i class="fa-solid fa-key fa-2x" aria-hidden="true"></i></a></li>
+                    {{ if .Site.Params.social.email.link }}<li><a href="mailto:{{ .Site.Params.social.email.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Email" aria-label="Send me an email"><i class="fa-solid fa-envelope fa-2x" aria-hidden="true"></i></a></li>{{ end }}
+                    {{ if .Site.Params.social.orcid.link }}<li><a href="{{ .Site.Params.social.orcid.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Orcid" aria-label="Go to my Orcid page"><i class="fa-brands fa-orcid fa-2x" aria-hidden="true"></i></a></li>{{ end }}
+                    {{ if .Site.Params.social.github.link }}<li><a href="{{ .Site.Params.social.github.link }}" target="_blank" class="tooltip tooltip-right" data-tip="Github" aria-label="Go to my Github page"><i class="fa-brands fa-github fa-2x" aria-hidden="true"></i></a></li>{{ end }}
+                    {{ if .Site.Params.social.linkedin.link }}<li><a href="{{ .Site.Params.social.linkedin.link }}" target="_blank" class="tooltip tooltip-right" data-tip="LinkedIn" aria-label="Go to my LinkedIn"><i class="fa-brands fa-linkedin fa-2x" aria-hidden="true"></i></a></li>{{ end }}
+                    {{ if .Site.Params.cv.download }}<li><a href="{{ .Site.Params.cv.download }}" target="_blank" class="tooltip tooltip-right" data-tip="CV" aria-label="Download my CV"><i class="fa-solid fa-file-pdf fa-2x" aria-hidden="true"></i></a></li>{{ end }}
+                    {{ if .Site.Params.social.gpg.link }}<li><a href="{{ .Site.Params.social.gpg.link }}" target="_blank" class="tooltip tooltip-right" data-tip="GPG key" aria-label="Download my GPG key"><i class="fa-solid fa-key fa-2x" aria-hidden="true"></i></a></li>{{ end }}
                 </ul>
             </div>
         </div>
