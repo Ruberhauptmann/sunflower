@@ -95,20 +95,17 @@
         {{ $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) 6 }}
         {{ range $index, $element := $paginator.Pages }}
         {{ if $element.Params.image }}
-        <div class="card md:card-side bg-secondary col-span-2 shadow-xl flex flex-col md:flex-row {{ if math.ModBool $index 2 }}md:flex-row-reverse{{ end }}">
-            <figure class="w-full md:w-1/2 p-0 md:p-2">
-                <img class="border-primary border-2 object-cover w-full h-96 rounded-xl" loading="lazy" src="{{ .Permalink }}{{ .Params.image }}" alt="Preview" />
-            </figure>
-            <div class="card-body w-full md:w-1/2 text-secondary-content flex flex-col justify-between p-4">
+        <div class="card bg-secondary shadow-xl">
+            <div class="card-body w-full text-secondary-content flex flex-col justify-between p-4">
                 <div>
                     {{ partial "postmeta.html" $element }}
                 </div>
-                <p class="line-clamp-3 text-justify mt-2">{{ $element.Summary }}</p>
+                <figure class="w-full p-0 md:p-2"><img class="border-primary border-2 object-cover w-full h-64 rounded-xl" loading="lazy" src="{{ .Permalink}}{{ .Params.image }}" alt="Preview" /></figure>
             </div>
         </div>
         {{ else }}
         <div class="card bg-secondary shadow-xl">
-            <div class="card-body text-secondary-content">
+            <div class="card-body text-secondary-content p-4">
                 <div>
                     {{ partial "postmeta.html" $element }}
                 </div>

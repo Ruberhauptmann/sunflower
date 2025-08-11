@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags - </title><meta name="generator" content="Hugo 0.148.2">
+
+    
+
+<link rel="stylesheet" href="/css/styles.dev.1754933343023.css">
+
+
+    <link rel="apple-touch-icon" href="/">
+    <link rel="icon" type="image/png" href="/">
+    <script defer src="/js/brands.min.js"></script>
+    <script defer src="/js/solid.min.js"></script>
+    <script defer src="/js/fontawesome.min.js"></script>
+</head>
+
+<body>
+<div class="fixed top-0 right-0 mt-12 mr-8 z-50">
+<div id="size-indicator"
+    class="flex items-center justify-center w-8 h-8 mb-2 text-sm text-slate-600 uppercase bg-slate-200 rounded-full sm:bg-red-200 md:bg-yellow-200 lg:bg-green-200 xl:bg-blue-200 2xl:bg-pink-200">
+    <span class="block sm:hidden">all</span>
+    <span class="hidden sm:block md:hidden">sm</span>
+    <span class="hidden md:block lg:hidden">md</span>
+    <span class="hidden lg:block xl:hidden">lg</span>
+    <span class="hidden xl:block 2xl:hidden">xl</span>
+    <span class="hidden 2xl:block">2xl</span>
+</div>
+
+<button id="container-menu" onclick="changeContainerVisibility()"
+    class="w-8 h-8 mb-2 block rounded-full text-slate-600 text-sm bg-slate-200 uppercase pointer-events-auto">
+    <span>C</span>
+</button>
+
+<div id="container-area"
+    class="fixed inset-0 top-0 -z-50 container mx-auto h-full bg-red-200 bg-opacity-25 pointer-events-none hidden">
+    <p></p>
+</div>
+
+<script>
+    function setContainerVisibility(data) {
+        var showContainer = data;
+        var e = document.querySelector("#container-area");
+        if (e.classList.contains("hidden") == showContainer) {
+            e.classList.toggle("hidden");
+        }
+        sessionStorage.setItem("showContainer", showContainer);
+    }
+
+    function changeContainerVisibility() {
+        var e = document.querySelector("#container-area");
+        var showContainer = e.classList.contains("hidden") ? true : false;
+        setContainerVisibility(showContainer);
+    }
+
+    function setupContainerIndicator() {
+         
+        var showContainer = sessionStorage.getItem("showContainer") === "true";
+
+        setContainerVisibility(showContainer);
+    }
+
+    window.onload = setupContainerIndicator();
+</script>
+
+<button id="parameter-menu" onclick="changeParameterVisibility()"
+    class="w-8 h-8 mb-2 rounded-full text-slate-600 text-sm bg-slate-200 uppercase pointer-events-auto">
+    <span>P</span>
+</button>
+
+<div id="parameter-area"
+    class="fixed w-full z-50 right-0 bottom-0 h-1/3 p-4 overflow-y-auto scroll-auto scroll-py-4 touch-auto text-slate-600 bg-white/[.95] border-y-8 border-white/50 hidden">
+    <table class="w-full text-left table-auto table-collapse border-slate-200">
+        <caption class="text-left pb-2">Hugo Variables for the current page.</caption>
+        <thead>
+            <tr class="p-2 font-semibold bg-slate-200 border-t ">
+                <th>Variable</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="p-2 border-t">
+                <td>.Name</td>
+                <td>&#34;Tags&#34;</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.Title</td>
+                <td>&#34;Tags&#34;</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.Kind</td>
+                <td>&#34;taxonomy&#34;</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.Type</td>
+                <td>&#34;tags&#34;</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.IsPage</td>
+                <td>false</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.IsHome</td>
+                <td>false</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.Next</td>
+                <td>&lt;nil&gt;</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.Prev</td>
+                <td>&lt;nil&gt;</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.Params</td>
+                <td>
+                    <table>
+                        
+                        <tr>
+                            <td class="text-right italic pr-2">&#34;draft&#34;:</td>
+                            <td>false</td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-right italic pr-2">&#34;iscjklanguage&#34;:</td>
+                            <td>false</td>
+                        </tr>
+                        
+                    </table>
+                </td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.Section</td>
+                <td>&#34;tags&#34;</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.CurrentSection</td>
+                <td>/tags</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.Pages</td>
+                <td>
+                    Pages(0)
+                    <table></table>
+                </td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.Resources</td>
+                <td>[]</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.File</td>
+                <td>""</td>
+            </tr>
+            <tr class="p-2 border-t">
+                <td>.File.Dir</td>
+                <td>""</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function setParameterVisibility(data) {
+        var showParameter = data;
+        var e = document.querySelector("#parameter-area");
+        if (e.classList.contains("hidden") == showParameter) {
+            e.classList.toggle("hidden");
+        }
+        sessionStorage.setItem("showParameter", showParameter);
+    }
+
+    function changeParameterVisibility() {
+        var e = document.querySelector("#parameter-area");
+        var showParameter = e.classList.contains("hidden") ? true : false;
+        setParameterVisibility(showParameter);
+    }
+
+    function setupParameterIndicator() {
+         
+        var showParameter = sessionStorage.getItem("showParameter") === "true";
+
+        setParameterVisibility(showParameter);
+    }
+
+    window.onload = setupParameterIndicator();
+</script>
+</div>
+<div class="sticky top-0 z-40 w-full h-7 backdrop-blur-xl flex-none transition-colors duration-500 lg:z-50 lg:border-b">
+    <div class="max-w-7xl mx-auto">
+        <div class="py-0.5 border-b lg:mx-20">
+            <div class="relative flex items-center">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="mx-4 lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                    </div>
+                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+</ul>
+                </div>
+                <a class="text-sm" href="//localhost:1313/"></a>
+                <div class="relative hidden lg:flex items-center ml-auto">
+                    <nav>
+                        <ul class="flex space-x-8">
+</ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<main class="relative">
+            <div class="max-w-[100vw] min-h-screen pb-16">
+
+<article class="max-w-screen-lg mx-auto my-5 px-4 sm:px-6">
+    <article class="max-w-prose mx-auto prose pb-2">
+        <h1>Tags</h1>
+        
+    </article>
+
+    <div class="divider divider-primary"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 grid-flow-row-dense gap-4 my-2">
+        
+    </div>
+
+    
+</article>
+
+            </div>
+        </main><footer class="footer footer-center p-10 bg-secondary text-secondary-content rounded">
+    <aside>
+        <p>made with <a href="https://gohugo.io" class="link link-hover">Hugo</a>,
+            <a href="https://tailwindcss.com" class="link link-hover">TailwindCSS</a> and
+            <a href="https://daisyui.com/" class="link link-hover">DaisyUI</a>
+        </p>
+        <p></p>
+    </aside>
+</footer></body>
+</html>
