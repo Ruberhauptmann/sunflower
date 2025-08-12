@@ -14,12 +14,13 @@ copyright = "Copyright © 2024, Leon N. Cooper, all rights reserved."
   hero = "hero.jpg"
   profile = "profile.png"
   mainSections = ["projects", "blog"]
-  homepageSections = ["posts", "publications"]
+  homepageSections = ["posts", "boardgames"]
   abstract = """
     This is a site showing the capacities of the sunflower theme for hugo.
     Using the example of Nobel laureate Leon N. Cooper, it shows the features it specifically has for the needs of academics.
   """
-  publicationLastName = "Cooper"
+  bgg_title = "Last boardgames played"
+  bgg_username = "ourkindofart"
 
 [params.social.orcid]
   link = "#orcid"
@@ -36,9 +37,7 @@ copyright = "Copyright © 2024, Leon N. Cooper, all rights reserved."
   url = "/cv/"
   download = "#cvdownload"
   general = true
-  publications = true
   education = true
-  schools_conferences = true
   work_experience = true
   technical_skills = true
 
@@ -56,10 +55,6 @@ date = ['date_finished', ':default']
     style = "dracula"
 
 [menu]
-[[menu.main]]
-  name = "Publications"
-  url = "/publications"
-  weight = -130
 [[menu.main]]
   name = "CV"
   url = "/cv"

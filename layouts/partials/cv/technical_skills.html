@@ -2,20 +2,13 @@
     {{ if .Site.Data.technical_skills.en }}
     {{ range $key, $value := .Site.Data.technical_skills.en }}
     <li><span class="text-lg font-semibold">{{ $key | humanize }}</span>
-        {{ range sort $value "name" "asc" }}
+        {{ range $value }}
         <ul>
             <li class="my-2">
-                <span class="font-semibold">{{ .name }}</span>
-                {{ if .projects }}
-                <div class="w-full">
-                    <ul class="list-disc list-inside">
-                        {{ range sort .projects "name" "asc" }}
-                        <li><a href="https://{{ .link }}" target="_blank" class="link">{{ .name}}</a>{{ if .description }}: {{ .description }}{{ end }}</li>
-                        {{ end }}
-                    </ul>
-                </div>
+                <span class="font-semibold">{{ . }}</span>
             </li>
-            {{ end }} {{ end }} {{ end }} {{ end }}
         </ul>
+        {{ end }}
     </li>
+    {{ end }} {{ end }}
 </ul>

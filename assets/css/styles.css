@@ -6,10 +6,10 @@
 
 @layer base {
     .BGGitem > a:first-child {
-        @apply h-32 aspect-square flex-none self-center overflow-hidden block border-primary border-2 rounded-xl;
+        @apply h-32 aspect-square flex-none self-center overflow-hidden block rounded-xl;
     }
     .BGGitem a img {
-        @apply object-cover w-full h-full object-center;
+        @apply object-contain w-full h-full object-center;
     }
     .BGGprovided a {
         @apply link;

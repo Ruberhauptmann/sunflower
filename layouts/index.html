@@ -27,67 +27,6 @@
     </div>
 </div>
 
-{{ if in .Site.Params.homepageSections "publications" }}
-{{ if or .Site.Data.preprints.items .Site.Data.publications.items }}
-<article class="max-w-screen-lg mx-auto my-5 px-6">
-    <h2 class="text-3xl font-bold">Recent publications</h2>
-
-    <ol>
-        {{ if .Site.Data.preprints.items }}
-        {{ range $index, $element := first 3 (sort .Site.Data.preprints.items "date" "desc") }}
-        <li class="p-1">
-            <ul>
-                <li>
-                    {{ $len := len $element.creators }}
-                    {{ range $author_key, $author := $element.creators  }}
-                    {{ if eq $.Site.Params.publicationLastName .lastName }}
-                    <span class="font-bold">{{ .firstName }} {{ .lastName }}</span>{{ if ne (add $author_key 1) $len }}, {{ end }}
-                    {{ else }}
-                    {{ .firstName }} {{ .lastName }}{{ if ne (add $author_key 1) $len }}, {{ end }}
-                    {{ end }}
-                    {{ end }}
-                </li>
-                <li>{{ $element.title }}</li>
-                <li>
-                    <a  class="link" href="https://doi.org/{{ $element.DOI }}" target="_blank">
-                        {{ $element.archiveID }}
-                    </a>
-                </li>
-            </ul>
-        </li>
-        {{ end }}
-        {{ end }}
-
-
-        {{ if .Site.Data.publications.items }}
-        {{ range $index, $element := first 3 (sort .Site.Data.publications.items "date" "desc") }}
-        <li class="p-1">
-            <ul>
-                <li>
-                    {{ $len := len $element.creators }}
-                    {{ range $author_key, $author := $element.creators  }}
-                    {{ if eq  $.Site.Params.publicationLastName .lastName }}
-                    <span class="font-bold">{{ .firstName }} {{ .lastName }}</span>{{ if ne (add $author_key 1) $len }}, {{ end }}
-                    {{ else }}
-                    {{ .firstName }} {{ .lastName }}{{ if ne (add $author_key 1) $len }}, {{ end }}
-                    {{ end }}
-                    {{ end }}
-                </li>
-                <li>{{ $element.title }}</li>
-                <li>
-                    <a  class="link" href="https://doi.org/{{ $element.DOI }}" target="_blank">
-                        {{ $element.journalAbbreviation }} <span class="font-semibold">{{ $element.volume }}</span>, {{ $element.pages }}
-                    </a>
-                </li>
-            </ul>
-        </li>
-        {{ end }}
-        {{ end }}
-    </ol>
-</article>
-{{ end }}
-{{ end }}
-
 {{ if in .Site.Params.homepageSections "posts" }}
 <article class="max-w-screen-lg mx-auto my-5 px-6">
     <h2 class="text-3xl font-bold">Recent posts</h2>
@@ -120,7 +59,7 @@
 
 {{ if in .Site.Params.homepageSections "boardgames" }}
 <article class="max-w-screen-lg mx-auto my-5 px-6">
-    <h2 class="text-3xl">{{ .Site.Params.bgg_title }}</h2>
+    <h2 class="text-3xl font-bold">{{ .Site.Params.bgg_title }}</h2>
 
     <script language="javascript" src="https://boardgamegeek.com/jswidget.php?username={{ .Site.Params.bgg_username}}&numitems=6&text=title&images=medium&show=recentplays&imagesonly=1&imagepos=left&showplaydate=0&domains%5B%5D=boardgame"></script>
     <!-- Hidden classes for Tailwind compilation -->
