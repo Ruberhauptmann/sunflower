@@ -1,0 +1,13 @@
+<ul>
+    {{ if .Site.Data.technical_skills.en }}
+    {{ range .Site.Data.projects.en }}
+    <li><span class="font-semibold">{{ .name }}</span> ({{ $len := len .technologies }}{{ range $i, $e := .technologies }}{{ $e }}{{ if ne (add $i 1) $len }}, {{ end }}{{ end }})<br>
+        <a href="https://{{ .link }}">{{ .link }}</a>
+        <ul class="list-disc list-inside">
+            {{ range .notes }} 
+            <li>{{ . }}</li>
+            {{ end }}
+        </ul>
+    </li>
+    {{ end }} {{ end }}
+</ul>

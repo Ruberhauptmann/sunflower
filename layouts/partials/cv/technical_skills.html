@@ -1,13 +1,10 @@
 <ul>
     {{ if .Site.Data.technical_skills.en }}
     {{ range $key, $value := .Site.Data.technical_skills.en }}
-    <li><span class="text-lg font-semibold">{{ $key | humanize }}</span>
-        {{ range $value }}
-        <ul>
-            <li class="my-2">
-                <span class="font-semibold">{{ . }}</span>
-            </li>
-        </ul>
+    <li><span class="font-semibold">{{ $key | humanize }}: </span>
+        {{ $len := len $value }}
+        {{ range $i, $e :=  $value }} 
+        {{ $e }}{{ if ne (add $i 1) $len }},{{ end }}
         {{ end }}
     </li>
     {{ end }} {{ end }}

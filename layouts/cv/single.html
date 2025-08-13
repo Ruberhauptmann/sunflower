@@ -18,18 +18,23 @@
         {{- partial "cv/general.html" . -}}
     {{ end }}
 
+    {{ if .Site.Params.cv.work_experience }}
+    <div class="divider divider-secondary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Employment</h2></div>
+        {{- partial "cv/work_experience.html" . -}}
+    {{ end }}
+
     {{ if .Site.Params.cv.education }}
     <div class="divider divider-primary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Education</h2></div>
         {{- partial "cv/education.html" . -}}
     {{ end }}
 
-    {{ if .Site.Params.cv.work_experience }}
-    <div class="divider divider-primary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Employment</h2></div>
-        {{- partial "cv/work_experience.html" . -}}
+    {{ if .Site.Params.cv.projects }}
+    <div class="divider divider-secondary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Projects</h2></div>
+        {{- partial "cv/projects.html" . -}}
     {{ end }}
 
     {{ if .Site.Params.cv.technical_skills }}
-    <div class="divider divider-secondary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Technical Skills</h2></div>
+    <div class="divider divider-primary divider-start pt-6 pb-4"><h2 class="text-xl font-bold">Technical Skills</h2></div>
         {{- partial "cv/technical_skills.html" . -}}
     {{ end }}
 </article>

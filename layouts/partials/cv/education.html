@@ -6,9 +6,17 @@
             <li><span class="font-light">since {{ time.Format "01/2006" .date }}</span></li>
             <li><span class="font-semibold">{{ .name }}</span>, {{ .institution }} ({{ .location }})</li>
             {{ if or (.notes) (.grade) }}
+            {{ if .notes }}
             <li>
-                {{ if .notes }}{{ .notes }}.{{ end }}
+                <div class="w-full">
+                    <ul class="list-disc list-inside">
+                        {{ range .notes }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
             </li>
+            {{ end }}
             <li>
                 {{ if .grade }}Final grade: {{ .grade }} (expected){{ end }}
             </li>
@@ -24,12 +32,22 @@
             <li><span class="font-light">{{ time.Format "01/2006" .date }}</span></li>
             <li><span class="font-semibold">{{ .name }}</span>, {{ .institution }} ({{ .location }})</li>
             {{ if or (.notes) (.grade) }}
+            {{ if .notes }}
             <li>
-                {{ if .notes }}{{ .notes }}.{{ end }}
+                <div class="w-full">
+                    <ul class="list-disc list-inside">
+                        {{ range .notes }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
             </li>
+            {{ end }}
+            {{ if .grade }}
             <li>
-                {{ if .grade }}Final grade: {{ .grade }}{{ end }}
+                Final grade: {{ .grade }}
             </li>
+            {{ end }}
             {{ end }}
         </ul>
     </li>
