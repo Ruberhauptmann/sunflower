@@ -1,6 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
     <title>{{ block "title" . }}
         {{- .Title }} - {{ .Site.Title -}}
         {{ end }}</title>
@@ -17,10 +18,8 @@
 
     {{ partialCached "css.html" . }}
 
-    {{ with resources.Get .Site.Params.Favicon }}
-        <link rel="apple-touch-icon" href="{{ .RelPermalink }}">
-        <link rel="icon" href="{{ .RelPermalink }}">
-    {{ end }}
+    <link rel="apple-touch-icon" href="/{{ .Site.Params.Favicon }}">
+    <link rel="icon" type="image/png" href="/{{ .Site.Params.Favicon }}">
     <script defer src="/js/brands.min.js"></script>
     <script defer src="/js/solid.min.js"></script>
     <script defer src="/js/fontawesome.min.js"></script>

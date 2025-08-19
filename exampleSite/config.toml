@@ -18,6 +18,7 @@ copyright = "Copyright © 2025, Leon N. Cooper, all rights reserved."
   abstract = """
     This is a site showing the capacities of the sunflower theme for hugo.
   """
+  impressum = "impressum"
 
 [params.social.email]
   link = "#email"
